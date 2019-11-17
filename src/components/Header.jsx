@@ -3,7 +3,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { toggleMenu } from "../actions";
+import { PrimaryNav } from './PrimaryNav';
+import { toggleMenu } from "../actions/toggleMenu";
 
 import logo from "../images/logo.svg";
 import avatar from "../images/avatar.png";
@@ -33,14 +34,7 @@ const Header = (props) => {
           </button>
 
           <nav className={`nav-holder ${props.menuClass}`}>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/movies">Movies</Link>
-              </li>
-            </ul>
+            <PrimaryNav></PrimaryNav>
           </nav>
 
         </div>
