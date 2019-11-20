@@ -1,0 +1,29 @@
+.box-list{
+  display: flex;
+  margin: 0 -15px;
+}
+
+.box-item{
+  width: 100%;
+  max-width: 25%;
+  padding: 0 15px;
+  a{
+    display: block;
+    color: $black;
+    &:hover{
+      color: $green;
+    }
+  }
+  .img-holder{
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    img{
+      width: 100%;
+    }
+  }
+  h3{
+    margin: 0 0 5px;
+  }
+}

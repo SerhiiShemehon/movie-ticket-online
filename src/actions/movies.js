@@ -7,29 +7,29 @@ import {
   URL_MOVIE
 } from "../constants";
 
-const getBannerMoviesPeding = () => ({
+const getMoviesPeding = () => ({
   type: GET_MOVIES_PEDING
 });
 
-const getBannerMoviesResolved = (payload) => ({
+const getMoviesResolved = (payload) => ({
   type: GET_MOVIES_RESOLVED,
   payload
 });
 
-const getBannerMoviesRejected = () => ({
+const getMoviesRejected = () => ({
   type: GET_MOVIES_REJECTED,
   payload: 'Something wrong!'
 });
 
-export const getBannerMovies = () => {
+export const getMovies = () => {
   return (dispatch) => {
-    dispatch(getBannerMoviesPeding());
+    dispatch(getMoviesPeding());
     axios.get(URL_MOVIE)
       .then(({ data }) => {
-        dispatch(getBannerMoviesResolved(data.movie));
+        dispatch(getMoviesResolved(data.movie));
       })
       .catch((error) => {
-        dispatch(getBannerMoviesRejected());
+        dispatch(getMoviesRejected());
       })
   };
 }

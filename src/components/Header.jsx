@@ -4,53 +4,57 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { PrimaryNav } from './PrimaryNav';
-import { toggleMenu } from "../actions/toggleMenu";
 
 import logo from "../images/logo.svg";
 import avatar from "../images/avatar.png";
 
-const Header = (props) => {
-  return (
-    <header className="header">
-      <div className="container">
-        <div className="logo-block">
-          <Link to="/" className="logo">
-            <img src={logo} alt="ticket logo"/>
-          </Link>
-        </div>
+export class Header extends React.Component {
+  state = {
+    buttonClass: 'no-active',
+    menuClass: 'hide-menu'
+  };
 
-        <div className="nav-block">
+  toggleMenu = () => {
+    this.setState({
+      buttonClass: this.state.buttonClass === 'no-active' ? 'is-active' : 'no-active',
+      menuClass: this.state.menuClass === 'hide-menu' ? 'show-menu' : 'hide-menu'
+    });
+  }
 
-          <div className="profile-block">
-            <Link to="/profile">
-              <img src={avatar} alt="avatar"/>
+  render() {
+    const { buttonClass, menuClass } = this.state;
+    return (
+      <header className="header">
+        <div className="container">
+          <div className="logo-block">
+            <Link to="/" className="logo">
+              <img src={logo} alt="ticket logo" />
             </Link>
           </div>
 
-          <button className={`hamburger hamburger--spin ${props.buttonClass}`} onClick={props.toggleMenu}>
-            <div className="hamburger-box">
-              <div className="hamburger-inner"></div>
+          <div className="nav-block">
+
+            <div className="profile-block">
+              <Link to="/profile">
+                <img src={avatar} alt="avatar" />
+              </Link>
             </div>
-          </button>
 
-          <nav className={`nav-holder ${props.menuClass}`}>
-            <PrimaryNav></PrimaryNav>
-          </nav>
+            <button className={`hamburger hamburger--spin ${buttonClass}`} onClick={this.toggleMenu}>
+              <div className="hamburger-box">
+                <div className="hamburger-inner"></div>
+              </div>
+            </button>
 
+            <nav className={`nav-holder ${menuClass}`}>
+              <PrimaryNav></PrimaryNav>
+            </nav>
+
+          </div>
         </div>
-      </div>
-    </header>
-  );
+      </header>
+    );
+  };
 }
 
-const mapStateToProps = (state) => ({
-  buttonClass: state.toggleMenuReducer.buttonClass,
-  menuClass: state.toggleMenuReducer.menuClass
-})
-
-const mapDispatchToProps = {
-  toggleMenu
-};
-
-export const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header);
 

@@ -1,9 +1,7 @@
 import { combineReducers } from "redux";
 
-import { toggleMenuReducer } from "./toggleMenuReducer";
-import { bannerMoviesReducer } from "./bannerMoviesReducer";
+import { moviesReducer } from "./moviesReducer";
 
 export const rootReducer = combineReducers({
-  toggleMenuReducer,
-  bannerMoviesReducer
+  moviesReducer
 });

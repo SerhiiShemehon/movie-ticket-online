@@ -10,7 +10,7 @@ const INITIAL_DATA = {
   isError: false
 };
 
-export const bannerMoviesReducer = (state = INITIAL_DATA, action) => {
+export const moviesReducer = (state = INITIAL_DATA, action) => {
   switch (action.type) {
     case GET_MOVIES_PEDING: {
       return {

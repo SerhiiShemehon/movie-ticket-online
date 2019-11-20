@@ -6,11 +6,21 @@ export const PrimaryNav = () => {
   let menuList = [
     {
       link: '/',
-      title: 'Home'
+      title: 'Главная'
     },
     {
-      link: '/movies',
-      title: 'Movies'
+      link: '/movies/',
+      title: 'Фильмы'
+    }
+    ,
+    {
+      link: '/timetable/',
+      title: 'Расписания'
+    }
+    ,
+    {
+      link: '/halls/',
+      title: 'Залы'
     }
   ];
 
