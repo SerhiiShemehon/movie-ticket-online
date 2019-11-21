@@ -13,7 +13,7 @@ export const HomePage = () => {
       <div className="container">
         <div className="section-holder">
           <h2 className="section-title"><span>Сейчас идет:</span> <Link to="/movies/">Больше</Link></h2>
-          <ListMoviesContainer></ListMoviesContainer>
+          <ListMoviesContainer quantityMovies="4"></ListMoviesContainer>
         </div>
         <div className="section-holder">
           <h2 className="section-title"><span>Наши залы:</span> <Link to="/halls/">Больше</Link></h2>

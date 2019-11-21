@@ -10,9 +10,9 @@ class ListMovies extends React.Component {
   }
 
   render() {
-    const { isLoading, movies, isError } = this.props;
+    const { isLoading, movies, isError, quantityMovies } = this.props;
 
-    const newMovies = movies.filter((item, i) => i < 4);
+    const newMovies = movies.filter((item, i) => i < quantityMovies);
 
     return (
       <div className="box-list">
