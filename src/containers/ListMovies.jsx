@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 import { getMovies } from "../actions/movies";
 
+import { createBrowserHistory } from "history";
+const history = createBrowserHistory();
+
 class ListMovies extends React.Component {
   componentDidMount() {
     this.props.getMovies();
@@ -31,10 +34,8 @@ class ListMovies extends React.Component {
               ))
               : <div className="loading-holder">
 
-              </div>
-            : <div className="error-holder">
-
-            </div>
+                </div>
+            : history.push('/error/')
         }
       </div>
     );

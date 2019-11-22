@@ -17,10 +17,6 @@
       font-size: 0;
     }
   }
-  .nav-block{
-    display: flex;
-    align-items: center;
-  }
   .profile-block{
     width: 50px;
     height: 50px;
@@ -34,28 +30,19 @@
     }
   }
   .nav-holder{
-    position: absolute;
-    z-index: 10;
-    top: 100%;
-    right: 25px;
-    text-align: right;
-    transition: all 0.3s linear;
-    transform: scaleX(0);
-    transform-origin: right;
-    &.show-menu{
-      transform: scaleX(1);
-    }
     ul{
       padding: 10px 0;
+      display: flex;
     }
     li{
-      margin-bottom: 10px;
-      &:last-child{
-        margin-bottom: 0;
-      }
+      margin: 0 10px;
     }
     a{
-      @extend .btn;
+      color: $white;
+      font-size: 22px;
+      &:hover{
+        color: $green;
+      }
     }
   }
 }

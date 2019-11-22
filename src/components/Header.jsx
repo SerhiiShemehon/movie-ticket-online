@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 import { PrimaryNav } from './PrimaryNav';
 
@@ -14,15 +13,7 @@ export class Header extends React.Component {
     menuClass: 'hide-menu'
   };
 
-  toggleMenu = () => {
-    this.setState({
-      buttonClass: this.state.buttonClass === 'no-active' ? 'is-active' : 'no-active',
-      menuClass: this.state.menuClass === 'hide-menu' ? 'show-menu' : 'hide-menu'
-    });
-  }
-
   render() {
-    const { buttonClass, menuClass } = this.state;
     return (
       <header className="header">
         <div className="container">
@@ -32,25 +23,17 @@ export class Header extends React.Component {
             </Link>
           </div>
 
-          <div className="nav-block">
+          <nav className={`nav-holder`}>
+            <PrimaryNav></PrimaryNav>
+          </nav>
 
-            <div className="profile-block">
-              <Link to="/profile">
-                <img src={avatar} alt="avatar" />
-              </Link>
-            </div>
 
-            <button className={`hamburger hamburger--spin ${buttonClass}`} onClick={this.toggleMenu}>
-              <div className="hamburger-box">
-                <div className="hamburger-inner"></div>
-              </div>
-            </button>
-
-            <nav className={`nav-holder ${menuClass}`}>
-              <PrimaryNav></PrimaryNav>
-            </nav>
-
+          <div className="profile-block">
+            <Link to="/profile">
+              <img src={avatar} alt="avatar" />
+            </Link>
           </div>
+
         </div>
       </header>
     );
