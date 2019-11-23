@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-
+import loading from "../images/loading.gif";
 
 import { getMovies } from "../actions/movies";
 
@@ -45,7 +45,7 @@ class BannerMovies extends React.Component {
                   <Link to={`/movies/${movie._id}`} className="btn">Узнать больше</Link>
                 </div>
               : <div className="loading-holder">
-                  
+                  <span className="loading"><img src={loading} alt="loading" /></span>
                 </div>
             : history.push('/error/')
         }

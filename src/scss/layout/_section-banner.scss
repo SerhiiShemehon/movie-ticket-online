@@ -1,5 +1,20 @@
-.banner-holder{
+.section-banner{
   height: 450px;
+  .loading-holder{
+    height: 100%;
+    position: relative;
+    .loading{
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+.banner-holder{
+  height: 100%;
   position: relative;
   background-position: 50% 10%;
   background-repeat: no-repeat;

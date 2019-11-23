@@ -20,7 +20,7 @@ export const HomePage = () => {
 
         </div>
         <div className="section-holder">
-          <h2 className="section-title"><span>Новости:</span> <Link to="/">Больше</Link></h2>
+          <h2 className="section-title"><span>Немного новостей:</span> <Link to="/">Больше</Link></h2>
           <ListNews></ListNews>
         </div>
       </div>

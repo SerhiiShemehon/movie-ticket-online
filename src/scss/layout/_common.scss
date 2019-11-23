@@ -1,9 +1,16 @@
-.page-holder{
+.layout-holder{
   height: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.page-holder{
+  padding: 50px 0;
+  .section-title{
+    margin-bottom: 50px;
+  }
 }
 
 .section-holder{
@@ -65,6 +72,9 @@
   max-width: 1100px;
   padding: 0 25px;
   margin: 0 auto;
+  &.small-container{
+    max-width: 900px;
+  }
 }
 
 .error-holder{
@@ -75,4 +85,30 @@
   padding: 20px 50px;
   border-radius: 20px;
   font-size: 25px;
+}
+
+#main{
+  position: relative;
+  &:after{
+    content: '';
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background: $bg-green;
+  }
+  &.loading{
+    &:after{
+      bottom: 0;
+      transition: all 0.3s linear;
+    }
+  }
+  &.load{
+    &:after {
+      top: 100%;
+      transition: all 0.3s linear;
+    }
+  }
 }
