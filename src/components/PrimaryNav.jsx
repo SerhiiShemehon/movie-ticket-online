@@ -14,13 +14,8 @@ export const PrimaryNav = () => {
     }
     ,
     {
-      link: '/timetable/',
+      link: '/showtimes/',
       title: 'Расписания'
-    }
-    ,
-    {
-      link: '/halls/',
-      title: 'Залы'
     }
   ];
 

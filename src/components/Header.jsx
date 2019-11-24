@@ -7,37 +7,30 @@ import { PrimaryNav } from './PrimaryNav';
 import logo from "../images/logo.svg";
 import avatar from "../images/avatar.png";
 
-export class Header extends React.Component {
-  state = {
-    buttonClass: 'no-active',
-    menuClass: 'hide-menu'
-  };
-
-  render() {
-    return (
-      <header className="header">
-        <div className="container">
-          <div className="logo-block">
-            <Link to="/" className="logo">
-              <img src={logo} alt="ticket logo" />
-            </Link>
-          </div>
-
-          <nav className={`nav-holder`}>
-            <PrimaryNav></PrimaryNav>
-          </nav>
-
-
-          <div className="profile-block">
-            <Link to="/profile">
-              <img src={avatar} alt="avatar" />
-            </Link>
-          </div>
-
+export const Header = () => {
+  return (
+    <header className="header">
+      <div className="container">
+        <div className="logo-block">
+          <Link to="/" className="logo">
+            <img src={logo} alt="ticket logo" />
+          </Link>
         </div>
-      </header>
-    );
-  };
+
+        <nav className={`nav-holder`}>
+          <PrimaryNav></PrimaryNav>
+        </nav>
+
+
+        <div className="profile-block">
+          <Link to="/profile">
+            <img src={avatar} alt="avatar" />
+          </Link>
+        </div>
+
+      </div>
+    </header>
+  );
 }
 
 
