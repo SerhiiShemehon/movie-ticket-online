@@ -2,15 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-import loading from "../images/loading.gif";
-
-import { getMovies } from "../actions/movies";
-
 import { randomInteger } from "../default";
-
-import { createBrowserHistory } from "history";
-const history = createBrowserHistory();
-
 
 class BannerMovies extends React.Component {
   state = {
@@ -32,59 +24,49 @@ class BannerMovies extends React.Component {
       '5cb84efb6298621d47b961cb': 'http://thumbs.dfs.ivi.ru/storage6/contents/2/b/6d4692172b6f6e814022bbaf5ad956.jpg'
     }
   }
-
   componentDidMount() {
-    this.props.getMovies();
+    
   }
 
   render() {
-    const { isLoading, movies, isError } = this.props;
+    const { movie } = this.props;
+    let currentBanner
 
-    const currentBanner = randomInteger(0, movies.length - 1);
-    const movie = movies.find((item, i) => i === currentBanner);
+    if(movie){
+      currentBanner = randomInteger(0, this.props.movies.length - 1);
+      this.props.movie = this.props.movies.find((item, i) => i === currentBanner);
+    }
 
     return (
-      <div className="section-banner">
-        {
-          !isError 
-            ? !isLoading && movie 
-              ? <div className="banner-holder" style={{ backgroundImage: `url(${this.state.bannerMovies[movie._id]})`}}>
-                  <h1>{movie.title}</h1>
-                  <div className="option-list">
-                    <h6>Страна:</h6>
-                    <ul>
-                      {movie.country.map((item, i) => (<li key={i}>{item}</li>))}
-                    </ul>
-                  </div>
-                  <div className="option-list">
-                    <h6>Жанр:</h6>
-                    <ul>
-                      {movie.genre.map((item, i) => (<li key={i}>{item}</li>))}
-                    </ul>
-                  </div>
-                  <Link to={`/movies/${movie._id}`} className="btn">Узнать больше</Link>
-                </div>
-              : <div className="loading-holder">
-                  <span className="loading"><img src={loading} alt="loading" /></span>
-                </div>
-            : history.push('/error/')
+      <React.Fragment>
+        { movie
+          ? <div className="section-banner">
+              <div className="banner-holder" style={{ backgroundImage: `url(${this.state.bannerMovies[movie._id]})`}}>
+              <h1>{movie.title}</h1>
+              <div className="option-list">
+                <h6>Страна:</h6>
+                <ul>
+                  {movie.country.map((item, i) => (<li key={i}>{item}</li>))}
+                </ul>
+              </div>
+              <div className="option-list">
+                <h6>Жанр:</h6>
+                <ul>
+                  {movie.genre.map((item, i) => (<li key={i}>{item}</li>))}
+                </ul>
+              </div>
+              <Link to={`/movies/${movie._id}`} className="btn">Узнать больше</Link>
+              </div>
+            </div>
+          : <div></div>
         }
-      </div>
+      </React.Fragment >
     );
   };
 }
 
 const mapStateToProps = (state) =>  ({
-  isError: state.moviesReducer.isError,
-  isLoading: state.moviesReducer.isLoading,
   movies: state.moviesReducer.movies
 });
 
-const mapDispatchToProps = {
-  getMovies
-};
-
-export const BannerMoviesContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BannerMovies);
+export const BannerMoviesContainer = connect( mapStateToProps )(BannerMovies);

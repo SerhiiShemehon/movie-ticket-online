@@ -5,7 +5,7 @@ import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import { store } from './store';
-import { Main } from "./routs/";
+import { MainContainer } from "./routs/";
 
 import './scss/style.scss';
 
@@ -14,7 +14,7 @@ const history = createBrowserHistory();
 ReactDOM.render(
   <Provider store={store}>
     <Router history ={history}>
-      <Main></Main>
+      <MainContainer></MainContainer>
     </Router>
   </Provider>,
   document.getElementById('root')

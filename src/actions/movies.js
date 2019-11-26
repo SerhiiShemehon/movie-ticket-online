@@ -1,35 +1,34 @@
 import axios from "axios";
 
 import {
-  GET_MOVIES_PEDING,
-  GET_MOVIES_RESOLVED,
-  GET_MOVIES_REJECTED,
+  MOVIES_LOADING,
+  MOVIES_DATA,
+  MOVIES_ERROR,
   URL_MOVIE
 } from "../constants";
 
-const getMoviesPeding = () => ({
-  type: GET_MOVIES_PEDING
+const moviesLoading = () => ({
+  type: MOVIES_LOADING
 });
 
-const getMoviesResolved = (payload) => ({
-  type: GET_MOVIES_RESOLVED,
+const moviesData = (payload) => ({
+  type: MOVIES_DATA,
   payload
 });
 
-const getMoviesRejected = () => ({
-  type: GET_MOVIES_REJECTED,
-  payload: 'Something wrong!'
+const moviesError = () => ({
+  type: MOVIES_ERROR
 });
 
 export const getMovies = () => {
   return (dispatch) => {
-    dispatch(getMoviesPeding());
+    dispatch(moviesLoading());
     axios.get(URL_MOVIE)
       .then(({ data }) => {
-        dispatch(getMoviesResolved(data.movie));
+        dispatch(moviesData(data.movie));
       })
       .catch((error) => {
-        dispatch(getMoviesRejected());
+        dispatch(moviesError());
       })
   };
 }

@@ -14,10 +14,6 @@ class MovieItem extends React.Component {
     this.props.getMovieItem(this.props.id);
   }
 
-  hendelClickToSection = () => {
-
-  }
-
   render() {
     const { isLoading, movie, isError } = this.props;
 

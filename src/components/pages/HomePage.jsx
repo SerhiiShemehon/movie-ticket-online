@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Link } from "react-router-dom";
 
-import { BannerMoviesContainer } from "../containers/BannerMovies";
-import { ListMoviesContainer } from "../containers/ListMovies";
-import { ListNews } from "../containers/ListNews";
-import { ListPreview } from "../containers/ListPreview";
+import { BannerMoviesContainer } from "../../containers/BannerMovies";
+import { ListMoviesContainer } from "../../containers/ListMovies";
+import { ListNews } from "../../containers/ListNews";
+import { ListPreview } from "../../containers/ListPreview";
 
 export const HomePage = () => {
   return (
