@@ -3,24 +3,25 @@ import { connect } from 'react-redux';
 import { Route, Switch } from "react-router-dom";
 
 import { getMovies } from "../actions/movies";
+import { getNews } from '../actions/news';
 
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { HomePage } from "../components/pages/HomePage";
-import { MoviesPage } from "../components/MoviesPage";
-import { MovieItemPage } from "../components/MovieItemPage";
-import { Page404 } from "../components/Page404";
+import { Page404 } from "../components/pages/Page404";
+import { MoviesPage } from "../components/pages/MoviesPage";
+import { MovieItemPage } from "../components/pages/MovieItemPage";
 
 import loading from "../images/loading.gif";
 
 class Main extends React.Component {
   componentDidMount() {
     this.props.getMovies();
+    this.props.getNews();
   }
 
   render() {
     const { isLoading, isError } = this.props;
-    console.log(isLoading, isError);
     
     return (
       <div className="layout-holder">
@@ -32,9 +33,8 @@ class Main extends React.Component {
                 ? !isLoading 
                   ? <Switch>
                       <Route path="/" component={HomePage} exact></Route>
-                        {/* <Route path="/movies/" component={MoviesPage} exact></Route>
-                        <Route path="/movies/:id" component={MovieItemPage} exact></Route>
-                        <Route path="/error/" component={Page404} exact></Route> */}
+                      <Route path="/movies/" component={MoviesPage} exact></Route>
+                      <Route path="/movies/:id" component={MovieItemPage} exact></Route>
                     </Switch>
                   : <div className="loading-holder">
                       <span className="loading"><img src={loading} alt="loading" /></span>
@@ -51,11 +51,12 @@ class Main extends React.Component {
 
 const mapStateToProps = (state) => ({
   isError: state.errorReducer.isError,
-  isLoading: state.loadingReducer.isLoading,
+  isLoading: state.loadingReducer.isLoading
 });
 
 const mapDispatchToProps = {
-  getMovies
+  getMovies,
+  getNews
 };
 
 export const MainContainer = connect(

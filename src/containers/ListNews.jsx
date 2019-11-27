@@ -1,47 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 
-export class ListNews extends React.Component {
-
-  news = [
-    {
-      title: 'Леди Гага пишет сценарий к фильму о собственной жизни',
-      descriptions: 'Похоже, после успеха драматического фильма "Рождение звезды" американская певица Леди Гага решила не останавливаться, а продолжать продвигаться в сторону мирового кинематографа',
-      link: '/error/'
-    },
-    {
-      title: 'Гвен Стефани вышла в свет в топе от украинского дизайнера',
-      descriptions: 'Известная певица пришла на шоу в топе с хрустальной бахромой, который создал дизайнер из Украины Иван Фролов',
-      link: '/error/'
-    },
-    {
-      title: 'Бен Аффлек возвращается в режиссерское кресло',
-      descriptions: 'Он займется экранизацией произведения писателя Адама Хохшилда под названием "Призрак короля Леопольда: История жадности, террора и героизма в колониальной Африке"',
-      link: '/error/'
-    },
-    {
-      title: 'Дэниэл Крэйг сказал, что точно не вернется к роли Бонда',
-      descriptions: 'Несмотря на то, что Дэниэл Крэйг уже делал громкие заявления о том, что лучше вскроет себе вены, чем снова сыграет Джеймса Бонда, он всё равно подписался на участие в 25-м фильме об агенте 007',
-      link: '/error/'
-    }
-  ]
+class ListNews extends React.Component {
+  componentDidMount() {
+    console.log(this.props.news);
+    
+  }
 
   render() {
-
     return (
       <div className="box-list">
-        {
-          this.news.map((item, i) => (
-            <div className="box-item" key={i}>
-              <Link to={item.link}>
-                <h3>{item.title}</h3>
-                <p>{item.descriptions}</p>
-              </Link>
-            </div>
-          ))
-        }
+        
       </div>
     );
   };
 }
+
+const mapStateToProps = (state) =>  ({
+  news: state.newsReducer.news
+});
+
+export const ListNewsContainer = connect( mapStateToProps )(ListNews);

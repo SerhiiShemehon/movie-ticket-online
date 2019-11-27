@@ -1,21 +1,20 @@
 import React from 'react';
 
-import { Link } from "react-router-dom";
+import { NavLink  } from "react-router-dom";
 
 export const PrimaryNav = () => {
   let menuList = [
     {
       link: '/',
-      title: 'Главная'
+      title: 'Home'
     },
     {
       link: '/movies/',
-      title: 'Фильмы'
-    }
-    ,
+      title: 'Movies'
+    },
     {
-      link: '/showtimes/',
-      title: 'Расписания'
+      link: '/news/',
+      title: 'News'
     }
   ];
 
@@ -24,7 +23,7 @@ export const PrimaryNav = () => {
       {menuList.map((item, i) => {
         return (
           <li key={i}>
-            <Link to={item.link}>{item.title}</Link>
+            <NavLink exact to={item.link}>{item.title}</NavLink >
           </li>
         );
       })}

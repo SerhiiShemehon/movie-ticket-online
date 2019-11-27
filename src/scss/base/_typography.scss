@@ -60,4 +60,10 @@ a{
   &:hover {
     background: lighten($blue, 15%);
   }
+  &.btn-green{
+    background: $green;
+    &:hover {
+      background: lighten($green, 15%);
+    }
+  }
 }

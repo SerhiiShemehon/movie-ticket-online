@@ -1,97 +1,66 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getMovieItem } from "../actions/movieItem";
+const OptionItem = (props) => {
+  return (
+    <div className="option-list">
+      <span>{props.title}:</span>
+      <ul>
+        {Array.isArray(props.content) ? props.content.map((item, i) => (<li key={i}>{item}</li>)) : <li>{props.content}</li>}
+      </ul>
+    </div>
+  )
+}
 
-import loading from "../images/loading.gif";
 
-import { createBrowserHistory } from "history";
-const history = createBrowserHistory();
 
 class MovieItem extends React.Component {
+  state = {
+    movie: {} 
+  }
   
   componentDidMount() {
-    this.props.getMovieItem(this.props.id);
+    const { movies, id } = this.props;
+    this.setState({
+      movie: movies.find((item) => (item._id === id))
+    })
   }
 
   render() {
-    const { isLoading, movie, isError } = this.props;
-
+    const { movie } = this.state;
+    console.log(movie);
+    
     return (
-      !isError
-        ? !isLoading && movie
-          ? <div className="movie-holder">
-              <h1 className="section-title"><span>{movie.title}</span></h1>
-              <div className="option-holder">
-                <div className="img-holder">
-                  <img src={movie.poster} alt={movie.title}/>
-                </div>
-                <div className="text-holder">
-                  <div className="option-list">
-                    <span>Страна:</span>
-                    <ul>
-                      {Array.isArray(movie.country) ? movie.country.map((item, i) => (<li key={i}>{item}</li>)) : <li>{movie.country}</li>}
-                    </ul>
-                  </div>
-                  <div className="option-list">
-                    <span>Язык:</span>
-                    <ul>
-                      {Array.isArray(movie.language) ? movie.language.map((item, i) => (<li key={i}>{item}</li>)) : <li>{movie.language}</li>}
-                    </ul>
-                  </div>
-                  <div className="option-list">
-                    <span>Жанр:</span>
-                    <ul>
-                      {Array.isArray(movie.genre) ? movie.genre.map((item, i) => (<li key={i}>{item}</li>)) : <li>{movie.genre}</li>}
-                    </ul>
-                  </div>
-                  <div className="option-list">
-                    <span>Возраст:</span>
-                    <ul>
-                      {Array.isArray(movie.age) ? movie.age.map((item, i) => (<li key={i}>{item}</li>)) : <li>{movie.age}</li>}
-                    </ul>
-                  </div>
-                  <div className="option-list">
-                    <span>Время:</span>
-                    <ul>
-                      {Array.isArray(movie.long) ? movie.long.map((item, i) => (<li key={i}>{item}</li>)) : <li>{movie.long}</li>}
-                    </ul>
-                  </div>
-                  <div className="option-list">
-                    <span>В ролях актеры:</span>
-                    <ul>
-                      {Array.isArray(movie.actors) ? movie.actors.map((item, i) => (<li key={i}>{item}</li>)) : <li>{movie.actors}</li>}
-                    </ul>
-                  </div>
-                  <div className="option-list">
-                    <span>Описание:</span>
-                    <p>{movie.description}</p>
-                  </div>
-                </div>
+       movie 
+        ? <div className="movie-holder">
+            <h1 className="section-title"><span>{movie.title}</span></h1>
+            <div className="option-holder">
+              <div className="img-holder">
+                <img src={movie.poster} alt={movie.title}/>
               </div>
-              <div className="trailer">
-                <iframe src={movie.trailer} title={movie.title}></iframe>
+              <div className="text-holder">
+                <OptionItem title='Country' content={movie.country}></OptionItem>
+                <OptionItem title='Language' content={movie.language}></OptionItem>
+                <OptionItem title='Genre' content={movie.genre}></OptionItem>
+                <OptionItem title='Actors' content={movie.actors}></OptionItem>
+                <OptionItem title='Long' content={movie.long}></OptionItem>
+                <OptionItem title='Description' content={movie.description}></OptionItem>
               </div>
             </div>
-          : <div className="loading-holder">
-            <span className="loading"><img src={loading} alt="loading" /></span>
+            <h2>Trailer:</h2>
+            <div className="trailer">
+              <iframe src={movie.trailer} title={movie.title}></iframe>
+            </div>
           </div>
-        : history.push('/error/')
+        : <div></div> 
     );
   };
 }
 
 const mapStateToProps = (state) => ({
-  isError: state.movieItemReducer.isError,
-  isLoading: state.movieItemReducer.isLoading,
-  movie: state.movieItemReducer.movie
+  movies: state.moviesReducer.movies
 });
 
-const mapDispatchToProps = {
-  getMovieItem
-};
-
 export const MovieItemContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(MovieItem);
