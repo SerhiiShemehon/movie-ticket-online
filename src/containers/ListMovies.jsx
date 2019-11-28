@@ -2,29 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-class ListMovies extends React.Component {
+const ListMovies = (props) => {
+  const { movies, quantityMovies } = props;
+  const newMovies = movies.filter((item, i) => i < quantityMovies);
 
-  render() {
-    const { movies, quantityMovies } = this.props;
-
-    const newMovies = movies.filter((item, i) => i < quantityMovies);
-
-    return (
-      <div className="box-list">
-        { newMovies.map((item, i) => (
-            <div className="box-item" key={i}>
-              <Link to={`/movies/${item._id}`}>
-                <div className="img-holder">
-                  <img src={item.poster} alt={item.title} />
-                </div>
-                <h3>{item.title}</h3>
-              </Link>
-            </div>
-          ))
-        }
-      </div>
-    );
-  };
+  return (
+    <div className="box-list">
+      { newMovies.map((item, i) => (
+          <div className="box-item" key={i}>
+            <Link to={`/movies/${item._id}`}>
+              <div className="img-holder">
+                <img src={item.poster} alt={item.title} />
+              </div>
+              <h3>{item.title}</h3>
+            </Link>
+          </div>
+        ))
+      }
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => ({

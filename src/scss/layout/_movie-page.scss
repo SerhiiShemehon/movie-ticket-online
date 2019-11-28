@@ -14,7 +14,7 @@
   }
 }
 .movie-holder{
-  .section-title {
+  &>.section-title {
     margin-bottom: 50px;
     justify-content: center;
   }

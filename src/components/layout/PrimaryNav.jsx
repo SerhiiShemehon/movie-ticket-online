@@ -9,11 +9,11 @@ export const PrimaryNav = () => {
       title: 'Home'
     },
     {
-      link: '/movies/',
+      link: '/movies',
       title: 'Movies'
     },
     {
-      link: '/news/',
+      link: '/news',
       title: 'News'
     }
   ];

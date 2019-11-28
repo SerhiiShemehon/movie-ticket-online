@@ -6,14 +6,14 @@ export const NEWS_LOADING = 'NEWS_LOADING';
 export const NEWS_DATA = 'NEWS_DATA';
 export const NEWS_ERROR = 'NEWS_ERROR';
 
-export const GET_SESSION_ITEM_PEDING = 'GET_SESSION_ITEM_PEDING';
-export const GET_SESSION_ITEM_RESOLVED = 'GET_SESSION_ITEM_RESOLVED';
-export const GET_SESSION_ITEM_REJECTED = 'GET_SESSION_ITEM_REJECTED';
+export const SESSION_LOADING = 'SESSION_LOADING';
+export const SESSION_DATA = 'SESSION_DATA';
+export const SESSION_ERROR = 'SESSION_ERROR';
 
 
 export const URL = 'http://subdomain.entony.fs.a-level.com.ua/api/';
 export const URL_MOVIE = URL + 'movie';
-export const URL_NEWS = 'https://newsapi.org/v2/everything?q=cinema&apiKey=8e8ae969c91b470f8f233b05f2c28a73';
+export const URL_SESSION = URL + 'movie/session';
 
 
 
@@ -21,7 +21,24 @@ export const URL_NEWS = 'https://newsapi.org/v2/everything?q=cinema&apiKey=8e8ae
 
 
 
-
+export const NEWS = [
+	{
+		title: 'Why Rian Johnson Is Thankful For Negative Star Wars: The Last Jedi Comments',
+		description: 'Star Wars is one of the most beloved movie franchises of all time, and is showing no real signs of slowing down anytime soon.'
+	},
+	{
+		title: 'The Batman’s Zoe Kravitz Cut Her Hair, And DC Fans Are Freaking',
+		description: 'Matt Reeves’ The Batman is getting ready to start rolling cameras in the next few months, but there are a few preparations the actors are doing to get ready to enter Gotham City.'
+	},
+	{
+		title: 'How Much Money Bad Boys For Life Could Make Opening Weekend',
+		description: 'There are still some huge movies yet to come in 2019, but as we approach the end of the year, it’s time to start looking ahead to 2020.'
+	},
+	{
+		title: 'Colin Trevorrow Is Donating His Star Wars: The Rise Of Skywalker Residuals To A Great Cause',
+		description: 'Having already left his mark on the Jurassic Park franchise with 2015’s Jurassic World, Colin Trevorrow was supposed to jump to a galaxy far, far away and direct Star Wars: Episode IX, which we now know as The Rise of Skywalker.'
+	},
+]
 
 export const bannerMovies = {
 	'5c93e673ca38bf00172e49a2': 'https://kino-teatr.ua/public/main/films/trailer_15914.jpg',

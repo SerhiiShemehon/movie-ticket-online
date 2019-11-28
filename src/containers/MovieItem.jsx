@@ -12,49 +12,36 @@ const OptionItem = (props) => {
   )
 }
 
+const MovieItem = (props) => {
+  const { movies, id } = props;
+  const movie = movies.find((item) => (item._id === id))
 
-
-class MovieItem extends React.Component {
-  state = {
-    movie: {} 
-  }
-  
-  componentDidMount() {
-    const { movies, id } = this.props;
-    this.setState({
-      movie: movies.find((item) => (item._id === id))
-    })
-  }
-
-  render() {
-    const { movie } = this.state;
-    console.log(movie);
-    
-    return (
-       movie 
-        ? <div className="movie-holder">
-            <h1 className="section-title"><span>{movie.title}</span></h1>
-            <div className="option-holder">
-              <div className="img-holder">
-                <img src={movie.poster} alt={movie.title}/>
-              </div>
-              <div className="text-holder">
-                <OptionItem title='Country' content={movie.country}></OptionItem>
-                <OptionItem title='Language' content={movie.language}></OptionItem>
-                <OptionItem title='Genre' content={movie.genre}></OptionItem>
-                <OptionItem title='Actors' content={movie.actors}></OptionItem>
-                <OptionItem title='Long' content={movie.long}></OptionItem>
-                <OptionItem title='Description' content={movie.description}></OptionItem>
-              </div>
+  return (
+      movie 
+      ? <div className="movie-holder">
+          <h1 className="section-title"><span>{movie.title}</span></h1>
+          <div className="option-holder">
+            <div className="img-holder">
+              <img src={movie.poster} alt={movie.title}/>
             </div>
-            <h2>Trailer:</h2>
+            <div className="text-holder">
+              <OptionItem title='Country' content={movie.country}></OptionItem>
+              <OptionItem title='Language' content={movie.language}></OptionItem>
+              <OptionItem title='Genre' content={movie.genre}></OptionItem>
+              <OptionItem title='Actors' content={movie.actors}></OptionItem>
+              <OptionItem title='Long' content={movie.long}></OptionItem>
+              <OptionItem title='Description' content={movie.description}></OptionItem>
+            </div>
+          </div>
+          <div className="trailer-block">
+            <h2 className="section-title"><span>Trailer</span></h2>
             <div className="trailer">
               <iframe src={movie.trailer} title={movie.title}></iframe>
             </div>
           </div>
-        : <div></div> 
-    );
-  };
+        </div>
+      : <div></div> 
+  );
 }
 
 const mapStateToProps = (state) => ({
