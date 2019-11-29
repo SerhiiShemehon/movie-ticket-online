@@ -11,8 +11,9 @@ const ListMovies = (props) => {
       { newMovies.map((item, i) => (
           <div className="box-item" key={i}>
             <Link to={`/movies/${item._id}`}>
-              <div className="img-holder">
-                <img src={item.poster} alt={item.title} />
+              <div className="img-holder" style={{
+                'backgroundImage': `url(${item.poster})`
+              }}>
               </div>
               <h3>{item.title}</h3>
             </Link>

@@ -24,7 +24,7 @@
     transform: translateX(-50%);
     height: 1px;
     width: 110vw;
-    background: linear-gradient(to right, $green, $blue, $green, $blue, $green);
+    background: linear-gradient(to right, $green, $bg-dark, $green, $bg-dark, $green);
   }
 }
 

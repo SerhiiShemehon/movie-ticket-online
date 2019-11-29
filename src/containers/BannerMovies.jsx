@@ -20,7 +20,7 @@ const BannerMovies = (props) => {
         ? <div className="section-banner">
             <div className="banner-holder" style={{ backgroundImage: `url(${bannerMovies[movie._id]})`}}>
             <h1>{movie.title}</h1>
-            <Link to={`/movies/${movie._id}`} className="btn">To learn more</Link>
+            <Link to={`/movies/${movie._id}`} className="btn">learn more</Link>
             </div>
           </div>
         : <div></div>

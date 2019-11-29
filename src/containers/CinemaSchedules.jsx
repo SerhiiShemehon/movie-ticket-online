@@ -34,23 +34,21 @@ const CinemaSchedules = (props) => {
 	})
 
 	return (
-		<div className="sessions-block">
-			<h2 className="section-title"><span>Cinema Schedules</span></h2>
-				<ul className="">
+		<div className="sessions-block" id="sessions-block">
+			<h2 className="section-title"><span>Cinema Schedule</span></h2>
+				<ul className="session-list">
 				{arrDate.length 
 					? arrDate.map( (item, i) => (
-						<li key={i}>
-							<div className="">{item.date}</div>
-							<ul className="">
+						<li className="session-item" key={i}>
+							<div className="session-date">{item.date}:</div>
+							<ul className="session-time-list">
 								{item.time.map((elem,j)=>(
-									<li key={j}>{elem}</li>
+									<li className="session-time-item btn" key={j}>{elem}</li>
 								))}
 							</ul>
 						</li>
 					))
-					: <li className="">
-
-						</li>}
+					: <li className="not-session">Sorry, the movie is not shown!</li>}
 			</ul>
 		</div>
 	);
@@ -58,8 +56,6 @@ const CinemaSchedules = (props) => {
 
 
 const mapStateToProps = (state) => ({
-  isErrorSession: state.sessionReducer.isErrorSession,
-	isLoadingSession: state.sessionReducer.isLoadingSession,
 	sessionData: state.sessionReducer.sessionData
 });
 

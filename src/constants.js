@@ -24,19 +24,23 @@ export const URL_SESSION = URL + 'movie/session';
 export const NEWS = [
 	{
 		title: 'Why Rian Johnson Is Thankful For Negative Star Wars: The Last Jedi Comments',
-		description: 'Star Wars is one of the most beloved movie franchises of all time, and is showing no real signs of slowing down anytime soon.'
+		description: 'Star Wars is one of the most beloved movie franchises of all time, and is showing no real signs of slowing down anytime soon.',
+		link: '/news'
 	},
 	{
 		title: 'The Batman’s Zoe Kravitz Cut Her Hair, And DC Fans Are Freaking',
-		description: 'Matt Reeves’ The Batman is getting ready to start rolling cameras in the next few months, but there are a few preparations the actors are doing to get ready to enter Gotham City.'
+		description: 'Matt Reeves’ The Batman is getting ready to start rolling cameras in the next few months, but there are a few preparations the actors are doing to get ready to enter Gotham City.',
+		link: '/news'
 	},
 	{
 		title: 'How Much Money Bad Boys For Life Could Make Opening Weekend',
-		description: 'There are still some huge movies yet to come in 2019, but as we approach the end of the year, it’s time to start looking ahead to 2020.'
+		description: 'There are still some huge movies yet to come in 2019, but as we approach the end of the year, it’s time to start looking ahead to 2020.',
+		link: '/news'
 	},
 	{
 		title: 'Colin Trevorrow Is Donating His Star Wars: The Rise Of Skywalker Residuals To A Great Cause',
-		description: 'Having already left his mark on the Jurassic Park franchise with 2015’s Jurassic World, Colin Trevorrow was supposed to jump to a galaxy far, far away and direct Star Wars: Episode IX, which we now know as The Rise of Skywalker.'
+		description: 'Having already left his mark on the Jurassic Park franchise with 2015’s Jurassic World, Colin Trevorrow was supposed to jump to a galaxy far, far away and direct Star Wars: Episode IX, which we now know as The Rise of Skywalker.',
+		link: '/news'
 	},
 ]
 

@@ -12,7 +12,7 @@ export const HomePage = () => {
       <BannerMoviesContainer></BannerMoviesContainer>
       <div className="container">
         <div className="section-holder">
-          <h2 className="section-title"><span>Now coming</span> <Link to="/movies" className="btn btn-green">More</Link></h2>
+          <h2 className="section-title"><span>Now Coming</span> <Link to="/movies" className="btn btn-green">More</Link></h2>
           <ListMoviesContainer quantityMovies="4"></ListMoviesContainer>
         </div>
         <div className="section-holder">

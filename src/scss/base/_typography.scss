@@ -15,27 +15,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1{
-  font-size: 50px;
+  font-size: 45px;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 35px;
 }
 
 h3{
-  font-size: 30px;
-}
-
-h4 {
   font-size: 25px;
 }
 
-h5{
+h4 {
   font-size: 22px;
 }
 
-h6{
+h5{
   font-size: 20px;
+}
+
+h6{
+  font-size: 18px;
 }
 
 p{
@@ -48,22 +48,19 @@ a{
 }
 
 .btn{
+  font-family: $font-family;
   color: $white;
-  background: $blue;
+  background: $green;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 20px 7px;
   border-radius: 10px;
   font-size: 20px;
   transition: all 0.3s linear;
   text-transform: uppercase;
+  border: none;
+  outline: none;
   cursor: pointer;
   &:hover {
-    background: lighten($blue, 15%);
-  }
-  &.btn-green{
-    background: $green;
-    &:hover {
-      background: lighten($green, 15%);
-    }
+    background: lighten($green, 15%);
   }
 }

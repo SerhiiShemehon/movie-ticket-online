@@ -1,5 +1,5 @@
 .header{
-  background: $blue;
+  background: $bg-dark;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,7 +17,13 @@
     width: 100px;
     .logo{
       display: block;
-      font-size: 0;
+      font-size: 30px;
+      color: $white;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      span{
+        color: $green
+      }
     }
   }
   .profile-block{

@@ -12,7 +12,7 @@ export class ListNews extends React.Component {
         {
           NEWS.map( (item, i) => (
             <div className="box-item" key={i}>
-              <Link to={`/movies/`}>
+              <Link to={item.link}>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </Link>

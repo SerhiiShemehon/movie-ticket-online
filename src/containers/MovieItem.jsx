@@ -16,10 +16,17 @@ const MovieItem = (props) => {
   const { movies, id } = props;
   const movie = movies.find((item) => (item._id === id))
 
+  const handleClickToSession = () => {
+    const sessionsBlock = document.getElementById('sessions-block');
+    window.scrollBy({ top: (sessionsBlock.offsetTop - 100), behavior: 'smooth' });
+    console.log(sessionsBlock.offsetTop);
+    
+  }
+
   return (
       movie 
       ? <div className="movie-holder">
-          <h1 className="section-title"><span>{movie.title}</span></h1>
+        <h1 className="section-title"><span>{movie.title}</span><button className='btn btn-green' onClick={handleClickToSession}>buy a ticket</button></h1>
           <div className="option-holder">
             <div className="img-holder">
               <img src={movie.poster} alt={movie.title}/>

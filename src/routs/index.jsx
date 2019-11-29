@@ -4,8 +4,7 @@ import { Route, Switch } from "react-router-dom";
 
 import { getMovies } from "../actions/movies";
 
-import { Header } from "../components/layout/Header";
-import { Footer } from "../components/layout/Footer";
+import { Header, Footer } from "../components/layout/";
 import { HomePage } from "../components/pages/HomePage";
 import { Page404 } from "../components/pages/Page404";
 import { MoviesPage } from "../components/pages/MoviesPage";

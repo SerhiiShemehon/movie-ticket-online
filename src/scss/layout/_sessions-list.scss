@@ -1,0 +1,46 @@
+.session-list{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  .not-session{
+    font-size: 30px;
+  }
+  .session-item{
+    padding: 3px 25px;
+    border-radius: 25px;
+    background: #757575;
+    color: $white;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+  .session-date {
+    padding: 10px 15px 6px;
+    font-size: 35px;
+    font-weight: bold;
+    min-width: 100px;
+  }
+  .session-time-list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .session-time-item{
+    transition: all 0.3s linear;
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px 25px 3px;
+    color: $black;
+    background: lighten($bg-green, 10%);
+    cursor: pointer;
+    &:hover{
+      background: darken($bg-green, 10%);
+    }
+  }
+}
