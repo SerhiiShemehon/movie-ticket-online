@@ -10,6 +10,9 @@ export const SESSION_LOADING = 'SESSION_LOADING';
 export const SESSION_DATA = 'SESSION_DATA';
 export const SESSION_ERROR = 'SESSION_ERROR';
 
+export const FILTER_MOVIES_DATA = 'FILTER_MOVIES_DATA';
+
+
 
 export const URL = 'http://subdomain.entony.fs.a-level.com.ua/api/';
 export const URL_MOVIE = URL + 'movie';

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import { PrimaryNav } from './PrimaryNav';
 
-import logo from "../../images/logo.svg";
 import avatar from "../../images/avatar.png";
 
 export const Header = () => {

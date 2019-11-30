@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 
-const CinemaSchedules = (props) => {
-	const { sessionData } = props;
+const CinemaSchedules = ({ sessionData }) => {
 	const arrDate = [];
 
 	sessionData.forEach( (item) => {
@@ -53,7 +52,6 @@ const CinemaSchedules = (props) => {
 		</div>
 	);
 }
-
 
 const mapStateToProps = (state) => ({
 	sessionData: state.sessionReducer.sessionData

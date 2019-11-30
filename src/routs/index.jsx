@@ -4,11 +4,11 @@ import { Route, Switch } from "react-router-dom";
 
 import { getMovies } from "../actions/movies";
 
-import { Header, Footer } from "../components/layout/";
-import { HomePage } from "../components/pages/HomePage";
-import { Page404 } from "../components/pages/Page404";
-import { MoviesPage } from "../components/pages/MoviesPage";
-import { MovieItemPageContainer } from "../components/pages/MovieItemPage";
+import { Header, Footer } from "../components/layout";
+import { HomePage } from "../components/pages";
+import { Page404 } from "../components/pages";
+import { MoviesPageContainer } from "../containers";
+import { MovieItemPageContainer } from "../components/pages";
 
 import loading from "../images/loading.gif";
 
@@ -30,7 +30,7 @@ class Main extends React.Component {
                 ? !isLoading 
                   ? <Switch>
                       <Route path="/" component={HomePage} exact></Route>
-                      <Route path="/movies/" component={MoviesPage} exact></Route>
+                      <Route path="/movies/" component={MoviesPageContainer} exact></Route>
                       <Route path="/movies/:id" component={MovieItemPageContainer} exact></Route>
                     </Switch>
                   : <div className="loading-holder">

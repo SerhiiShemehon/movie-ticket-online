@@ -19,25 +19,23 @@ const MovieItem = (props) => {
   const handleClickToSession = () => {
     const sessionsBlock = document.getElementById('sessions-block');
     window.scrollBy({ top: (sessionsBlock.offsetTop - 100), behavior: 'smooth' });
-    console.log(sessionsBlock.offsetTop);
-    
   }
 
   return (
       movie 
       ? <div className="movie-holder">
-        <h1 className="section-title"><span>{movie.title}</span><button className='btn btn-green' onClick={handleClickToSession}>buy a ticket</button></h1>
+        <h1 className="section-title">{movie.title}<button className='btn btn-green' onClick={handleClickToSession}>ticket</button></h1>
           <div className="option-holder">
             <div className="img-holder">
               <img src={movie.poster} alt={movie.title}/>
             </div>
             <div className="text-holder">
-              <OptionItem title='Country' content={movie.country}></OptionItem>
-              <OptionItem title='Language' content={movie.language}></OptionItem>
-              <OptionItem title='Genre' content={movie.genre}></OptionItem>
-              <OptionItem title='Actors' content={movie.actors}></OptionItem>
-              <OptionItem title='Long' content={movie.long}></OptionItem>
-              <OptionItem title='Description' content={movie.description}></OptionItem>
+              <OptionItem title='Country' content={movie.country} />
+              <OptionItem title='Language' content={movie.language} />
+              <OptionItem title='Genre' content={movie.genre} />
+              <OptionItem title='Actors' content={movie.actors} />
+              <OptionItem title='Long' content={movie.long} />
+              <OptionItem title='Description' content={movie.description} />
             </div>
           </div>
           <div className="trailer-block">

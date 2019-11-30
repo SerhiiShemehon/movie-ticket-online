@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 import { randomInteger } from "../default";
 import { bannerMovies } from '../constants'
 
-const BannerMovies = (props) => {
-  const { movies } = props;
+const BannerMovies = ({ movies }) => {
   let currentBanner, movie;
 
   if(movies.length){
-    currentBanner = randomInteger(0, props.movies.length - 1);
-    movie = props.movies.find((item, i) => i === currentBanner);
+    currentBanner = randomInteger(0, movies.length - 1);
+    movie = movies.find((item, i) => i === currentBanner);
   }
 
   return (

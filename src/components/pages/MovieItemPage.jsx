@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { MovieItemContainer } from '../../containers/MovieItem'
-import { CinemaSchedulesContainer } from "../../containers/CinemaSchedules";
+import { MovieItemContainer, CinemaSchedulesContainer } from '../../containers';
 
 import { getSession } from "../../actions/session";
 
