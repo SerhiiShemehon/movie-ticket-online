@@ -2,19 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from "react-router-dom";
 
-import { getMovies } from "../actions/movies";
+import { getMovies, getRoom } from "../actions";
 
 import { Header, Footer } from "../components/layout";
-import { HomePage } from "../components/pages";
-import { Page404 } from "../components/pages";
-import { MoviesPageContainer } from "../containers";
-import { MovieItemPageContainer } from "../components/pages";
+import { HomePage, Page404, NewsPage } from "../components/pages";
+import { MoviesPageContainer, MovieItemPageContainer, SchedulePageContainer, BayTicketPageContainer } from "../containers";
 
 import loading from "../images/loading.gif";
 
 class Main extends React.Component {
   componentDidMount() {
     this.props.getMovies();
+    this.props.getRoom();
   }
 
   render() {
@@ -29,14 +28,17 @@ class Main extends React.Component {
               !isError 
                 ? !isLoading 
                   ? <Switch>
-                      <Route path="/" component={HomePage} exact></Route>
-                      <Route path="/movies/" component={MoviesPageContainer} exact></Route>
-                      <Route path="/movies/:id" component={MovieItemPageContainer} exact></Route>
+                      <Route path="/" component={HomePage} exact />
+                      <Route path="/movies/" component={MoviesPageContainer} exact />
+                      <Route path="/schedule/" component={SchedulePageContainer} exact />
+                      <Route path="/news/" component={NewsPage} />
+                      <Route path="/movies/:id" component={MovieItemPageContainer} exact />
+                      <Route path="/buy/:room/:movie/:session" component={BayTicketPageContainer} exact />
                     </Switch>
                   : <div className="loading-holder">
                       <span className="loading"><img src={loading} alt="loading" /></span>
                     </div>
-                : <Page404></Page404>
+                : <Page404 />
             }
           </div>
         </div>
@@ -52,7 +54,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  getMovies
+  getMovies,
+  getRoom
 };
 
 export const MainContainer = connect(

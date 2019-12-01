@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 
-import { MovieItemContainer, CinemaSchedulesContainer } from '../../containers';
+import { MovieItemContainer, CinemaSchedulesContainer } from './';
 
-import { getSession } from "../../actions/session";
+import { getSession } from "../actions";
 
 class MovieItemPage extends React.Component {
   componentDidMount(){
-    this.props.getSession(this.props.match.params.id)
+    this.props.getSession(this.props.match.params.id);
   };
 
   render() {
@@ -17,10 +17,9 @@ class MovieItemPage extends React.Component {
       <div className="movie-page">
         <div className="container">
           <MovieItemContainer id={this.props.match.params.id} />  
-          <CinemaSchedulesContainer />
+          <CinemaSchedulesContainer id={this.props.match.params.id} />
           <div className="moovi-page-footer">
             <Link to='/movies' className="btn">back</Link>
-
           </div>
         </div>
       </div>

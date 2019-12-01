@@ -1,3 +1,3 @@
 export * from './HomePage';
-export * from './MovieItemPage';
 export * from './Page404';
+export * from './NewsPage';

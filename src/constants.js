@@ -2,9 +2,9 @@ export const MOVIES_LOADING = 'MOVIES_LOADING';
 export const MOVIES_DATA = 'MOVIES_DATA';
 export const MOVIES_ERROR = 'MOVIES_ERROR';
 
-export const NEWS_LOADING = 'NEWS_LOADING';
-export const NEWS_DATA = 'NEWS_DATA';
-export const NEWS_ERROR = 'NEWS_ERROR';
+export const ROOM_LOADING = 'ROOM_LOADING';
+export const ROOM_DATA = 'ROOM_DATA';
+export const ROOM_ERROR = 'ROOM_ERROR';
 
 export const SESSION_LOADING = 'SESSION_LOADING';
 export const SESSION_DATA = 'SESSION_DATA';
@@ -17,7 +17,9 @@ export const FILTER_MOVIES_DATA = 'FILTER_MOVIES_DATA';
 export const URL = 'http://subdomain.entony.fs.a-level.com.ua/api/';
 export const URL_MOVIE = URL + 'movie';
 export const URL_SESSION = URL + 'movie/session';
-
+export const URL_ROOM = URL + 'movie/room';
+export const URL_SPACE = URL + 'movie/space';
+export const URL_SPACE_SHADOW = URL + 'movie/space-shadow';
 
 
 

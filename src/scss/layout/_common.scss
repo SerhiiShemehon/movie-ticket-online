@@ -49,6 +49,10 @@
   }
 }
 
+.section-subtitle{
+  margin-right: 20px;
+}
+
 #wrapper{
   overflow: hidden;
   height: 100%;
@@ -65,10 +69,17 @@
   }
 }
 
-.error-holder, .loading-holder{
+.d-flex{
+  display: flex;
+}
+
+.error-holder,
+.loading-holder,
+.news-page {
   height: calc(100vh - 125px);
   display: flex;
-  .error-block{
+  .error-block,
+  .news-holder {
     margin: auto;
     text-align: center;
     max-width: 700px;

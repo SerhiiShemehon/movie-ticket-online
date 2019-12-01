@@ -32,8 +32,8 @@ const MoviesPage = ({ movies }) => {
   }
 
   return (
-    <div className="container">
-      <div className="page-holder">
+    <div className="page-holder">
+      <div className="container">
         <h1 className="section-title"><span>All Movies:</span></h1>
         <div className="movie-section">
           <FilterMovies movies={movies} hendleParentFilter={hendleFilter}/>

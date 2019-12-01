@@ -20,6 +20,15 @@ export const sessionReducer = (state = INITIAL_DATA, action) => {
       };
     }
     case SESSION_DATA: {
+      action.payload.sort((a,b)=>{
+        if (new Date(a.date) > new Date(b.date)){
+          return 1;
+        } else if (new Date(a.date) < new Date(b.date)){
+          return -1;
+        } else {
+          return 0;
+        }
+      });
       return {
         ...state,
         isLoadingSession: false,

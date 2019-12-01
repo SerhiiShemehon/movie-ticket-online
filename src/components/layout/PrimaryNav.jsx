@@ -13,6 +13,11 @@ export const PrimaryNav = () => {
       title: 'Movies'
     },
     {
+      link: '/schedule',
+      title: 'Schedule'
+    }
+    ,
+    {
       link: '/news',
       title: 'News'
     }
