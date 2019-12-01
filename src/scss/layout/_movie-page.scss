@@ -70,17 +70,26 @@
     }
   }
 }
-
-
 .movie-section{
   display: flex;
   .filter-sidebar{
     min-width: 20%;
+    padding-right: 5%;
   }
   .box-item {
     .img-holder {
       height: 200px;
     }
+  }
+}
+.movies-bock-list{
+  width: 100%;
+}
+.search-block{
+  margin-bottom: 20px;
+  padding-right: 30px;
+  input{
+    display: block;
   }
 }
 .filter-block{
@@ -110,17 +119,13 @@
     &:checked{
       &+label{
         span{
-          width: 15px;
-          height: 15px;
-          opacity: 1;
-          transition: all 0.3s linear;
           &:before{
             width: 10px;
-            transition: width 0.3s 0.3s linear;
+            transition: width 0.3s linear;
           }
           &:after {
             width: 17px;
-            transition: width 0.3s 0.6s linear;
+            transition: width 0.3s 0.3s linear;
           }
         }
       }
@@ -130,19 +135,20 @@
     transition: color 0.3s linear;
     cursor: pointer;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     &:hover{
       color: $green;
     }
     span{
+      width: 15px;
+      min-width: 15px;
+      height: 15px;
       display: block;
       position: relative;
-      margin-left: 20px;
-      width: 0px;
-      height: 0px;
+      margin-left: 5px;
       border: 1px solid $green;
       border-radius: 50%;
-      opacity: 0;
       &:before{
         content: '';
         position: absolute;
@@ -167,4 +173,11 @@
       }
     }
   }
+}
+.not-movie{
+  padding: 0 15px;
+}
+.moovi-page-footer{
+  padding: 50px 0 0;
+  text-align: right;
 }

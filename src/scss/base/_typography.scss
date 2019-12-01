@@ -64,3 +64,19 @@ a{
     background: lighten($green, 15%);
   }
 }
+
+label {
+  cursor: pointer;
+}
+
+input{
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid $bg-dark;
+  outline: none;
+  &:focus{
+    border-color: $bg-green;
+  }
+}

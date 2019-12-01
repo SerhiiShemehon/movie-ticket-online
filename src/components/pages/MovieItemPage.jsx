@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
+
 
 import { MovieItemContainer, CinemaSchedulesContainer } from '../../containers';
 
@@ -16,6 +18,10 @@ class MovieItemPage extends React.Component {
         <div className="container">
           <MovieItemContainer id={this.props.match.params.id} />  
           <CinemaSchedulesContainer />
+          <div className="moovi-page-footer">
+            <Link to='/movies' className="btn">back</Link>
+
+          </div>
         </div>
       </div>
     );
