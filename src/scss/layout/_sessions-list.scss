@@ -65,3 +65,65 @@
     }
   }
 }
+
+.schedule-list{
+  .schedule-date{
+    padding: 10px 25px;
+    border-radius: 25px;
+    background: #757575;
+    color: $white;
+    margin-bottom: 20px;
+  }
+  .movie-time-item{
+    padding: 25px;
+    border-radius: 25px;
+    background: #eee;
+    margin-bottom: 20px;
+    display: flex;
+    .img-holder{
+      width: 130px;
+      height: 200px;
+      margin-right: 50px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+    h3{
+      font-size: 35px;
+    }
+    h4{
+      text-transform: uppercase;
+    }
+    .hall{
+      span{
+        border: 1px solid $black;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 5px;
+        margin-left: 10px;
+        &.room-yellow {
+          background: $yellow;
+        }
+        &.room-green{
+          background: $green;
+        }
+      }
+    }
+    .btn{
+      margin-right: 20px;
+    }
+  }
+}
+
+.nav-date{
+  position: fixed;
+  top: 75px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  .btn{
+    margin: 0 5px;
+  }
+}
