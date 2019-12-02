@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from "react-router-dom";
 
-import { getMovies, getRoom } from "../actions";
+import { getMovies, getRoom, getSession} from "../actions";
 
 import { Header, Footer } from "../components/layout";
-import { HomePage, Page404, NewsPage } from "../components/pages";
-import { MoviesPageContainer, MovieItemPageContainer, SchedulePageContainer, BayTicketPageContainer } from "../containers";
+import { HomePage, Page404, NewsPage, MovieItemPage } from "../components/pages";
+import { MoviesPageContainer, SchedulePageContainer, BayTicketPageContainer } from "../containers";
 
 import loading from "../images/loading.gif";
 
@@ -14,6 +14,7 @@ class Main extends React.Component {
   componentDidMount() {
     this.props.getMovies();
     this.props.getRoom();
+    this.props.getSession();
   }
 
   render() {
@@ -32,7 +33,7 @@ class Main extends React.Component {
                       <Route path="/movies/" component={MoviesPageContainer} exact />
                       <Route path="/schedule/" component={SchedulePageContainer} exact />
                       <Route path="/news/" component={NewsPage} />
-                      <Route path="/movies/:id" component={MovieItemPageContainer} exact />
+                      <Route path="/movies/:id" component={MovieItemPage} exact />
                       <Route path="/buy/:room/:movie/:session" component={BayTicketPageContainer} exact />
                     </Switch>
                   : <div className="loading-holder">
@@ -55,7 +56,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getMovies,
-  getRoom
+  getRoom,
+  getSession
 };
 
 export const MainContainer = connect(

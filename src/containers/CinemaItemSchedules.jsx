@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 const CinemaSchedules = ({ sessionData, roomData, id }) => {
+	const currentSessionData = sessionData.filter((item) => item.movie === id)
 	const arrDate = [];
-
-	sessionData.forEach( (item) => {
+	
+	currentSessionData.forEach( (item) => {
 		let roomItem = roomData.find(room => room._id === item.room);
 		let newArrDate = [...arrDate];
 		let date = new Date(item.date);

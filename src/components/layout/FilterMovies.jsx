@@ -11,9 +11,13 @@ const RadioBlock = (props) => {
   return (
     <div className="filter-block">
       <h3><span>{props.title}</span></h3>
+      <div className="filter-item" key="0">
+        <input className="not-filter" type="radio" name={props.name} id={`all-${props.name}`} value={`all-${props.name}`} checked={radioChecked === `all-${props.name}`} onChange={hendleChangeRadio} />
+        <label htmlFor={`all-${props.name}`}>{`All ${props.name}`}<span></span></label>
+      </div>
       {
         props.genreArr.map((item, i) => (
-          <div className="filter-item" key={i}>
+          <div className="filter-item" key={i+1}>
             <input type="radio" name={props.name} id={transliterate(item)} value={item} checked={radioChecked === item} onChange={hendleChangeRadio} />
             <label htmlFor={transliterate(item)}>{item}<span></span></label>
           </div>

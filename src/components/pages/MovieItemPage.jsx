@@ -1,17 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
 
-import { MovieItemContainer, CinemaSchedulesContainer } from './';
+import { MovieItemContainer, CinemaSchedulesContainer } from '../../containers';
 
-import { getSession } from "../actions";
-
-class MovieItemPage extends React.Component {
-  componentDidMount(){
-    this.props.getSession(this.props.match.params.id);
-  };
-
+export class MovieItemPage extends React.Component {
   render() {
     return (
       <div className="movie-page">
@@ -26,12 +19,3 @@ class MovieItemPage extends React.Component {
     );
   };
 }
-
-const mapDispatchToProps = {
-  getSession
-};
-
-export const MovieItemPageContainer = connect(
-  null,
-  mapDispatchToProps
-)(MovieItemPage);

@@ -1,65 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-import { getSession } from "../actions";
-
 const SchedulePage = (props) => {
   const { sessionData, roomData, movies } = props;
-  const [ arrDate, setDate ] = useState([])
-
-  useEffect(() => {
-    props.getSession(false);
-  }, []);
-
-  useEffect(() => {
-    sessionData.forEach( (item) => {
-      let roomItem = roomData.find(room => room._id === item.room);
-      let movieItem = movies.find(movie => movie._id === item.movie);
-      let newArrDate = [...arrDate];
-      let date = new Date(item.date);
-      let strDate = date.getDate() + '/' + (date.getMonth() + 1);
-      let strTime = date.getHours() + '-' + date.getMinutes();
   
-      if( arrDate.length ){
-        let isArr = false;
-        newArrDate.forEach( (elem, i) => {
-          if( elem.date === strDate ){
-            isArr = true;
-            arrDate[i].option.push({
-              time: strTime,
-              room: roomItem.name,
-              movie: movieItem
-            });
-          }
-        });
-        if (!isArr){
-          arrDate.push({
-            date: strDate,
-            option: [{
-              time: strTime,
-              room: roomItem.name,
-              movie: movieItem
-            }]
-          })
+  const arrDate = [];
+  sessionData.forEach( (item) => {
+    let roomItem = roomData.find(room => room._id === item.room);
+    let movieItem = movies.find(movie => movie._id === item.movie);
+    let newArrDate = [...arrDate];
+    let date = new Date(item.date);
+    let strDate = date.getDate() + '/' + (date.getMonth() + 1);
+    let strTime = date.getHours() + '-' + date.getMinutes();
+
+    if( arrDate.length ){
+      let isArr = false;
+      newArrDate.forEach( (elem, i) => {
+        if( elem.date === strDate ){
+          isArr = true;
+          arrDate[i].option.push({
+            time: strTime,
+            room: roomItem.name,
+            movie: movieItem
+          });
         }
-      } else {
+      });
+      if (!isArr){
         arrDate.push({
           date: strDate,
           option: [{
-            time:	strTime,
+            time: strTime,
             room: roomItem.name,
             movie: movieItem
           }]
-        });
+        })
       }
-    });
-    console.log(arrDate);
-  }, [sessionData, roomData, movies]);
+    } else {
+      arrDate.push({
+        date: strDate,
+        option: [{
+          time:	strTime,
+          room: roomItem.name,
+          movie: movieItem
+        }]
+      });
+    }
+  });
 
   const handleClickToSession = (elem) => {
     const sessionsBlock = document.getElementById(elem);
-    window.scrollBy({ top: (sessionsBlock.offsetTop - 120), behavior: 'smooth' });
+    window.scrollBy({ top: (sessionsBlock.offsetTop - window.pageYOffset - 120), behavior: 'smooth' });
   }
 
   return (
@@ -115,11 +106,6 @@ const mapStateToProps = (state) => ({
   movies: state.moviesReducer.movies
 });
 
-const mapDispatchToProps = {
-  getSession
-};
-
 export const SchedulePageContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(SchedulePage);

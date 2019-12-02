@@ -7,7 +7,7 @@ const MoviesPage = ({ movies }) => {
   const [currentMovies, setMovies] = useState(movies);
   
   const hendleFilter = () => {
-    const filter = document.querySelectorAll('.filter-block input:checked');
+    const filter = document.querySelectorAll('.filter-block input:not(.not-filter):checked');
     const arrayFilterOption = [];
     filter.forEach((elem) => {
       arrayFilterOption.push({
