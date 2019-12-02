@@ -59,40 +59,34 @@ const SchedulePage = (props) => {
         <h1 className="section-title"><span>Schedule</span></h1>
         <nav className="nav-date">
           {
-            arrDate.length 
-              ? arrDate.map((item, i) => (
-                <button key={i} className="btn" onClick={() => handleClickToSession(`schedule-item-${i}`)}>{item.date}</button>
-              ))
-              : <div className=""></div>
+            arrDate.length && arrDate.map((item, i) => (
+              <button key={i} className="btn" onClick={() => handleClickToSession(`schedule-item-${i}`)}>{item.date}</button>
+            ))
           }
         </nav>
         <div className="schedule-list">
           {
-            arrDate.length 
-              ? arrDate.map((item, i) => (
-                <div id={`schedule-item-${i}`} className="schedule-item" key={i}>
-                  <h2 className="schedule-date">{item.date}</h2>
-                  <div className="movie-time-list">
-                    {
-                      item.option.map((elem,j) => (
-                        elem.movie
-                          ? <div className="movie-time-item" key={j}>
-                              <div className="img-holder" style={{'backgroundImage': `url(${elem.movie.poster})`}}></div>
-                              <div className="text-holder">
-                                <h3>{elem.movie.title}</h3>
-                                <h4 className="time">{`time: ${elem.time}`}</h4>
-                                <h4 className="hall">{`${elem.room} hall`}<span className={`room-${elem.room}`}></span></h4>
-                                <Link to={`/buy/${elem.room}/${elem.movie._id}/${elem.time}`} className="btn">buy</Link>
-                                <Link to={`/movies/${elem.movie._id}`} className="btn">more</Link>
-                              </div>
-                            </div>
-                        : ''
-                      ))
-                    }
-                  </div>
+            arrDate.length && arrDate.map((item, i) => (
+              <div id={`schedule-item-${i}`} className="schedule-item" key={i}>
+                <h2 className="schedule-date">{item.date}</h2>
+                <div className="movie-time-list">
+                  {
+                    item.option.map((elem, j) => (
+                      elem.movie && (<div className="movie-time-item" key={j}>
+                        <div className="img-holder" style={{ 'backgroundImage': `url(${elem.movie.poster})` }}></div>
+                        <div className="text-holder">
+                          <h3>{elem.movie.title}</h3>
+                          <h4 className="time">{`time: ${elem.time}`}</h4>
+                          <h4 className="hall">{`${elem.room} hall`}<span className={`room-${elem.room}`}></span></h4>
+                          <Link to={`/buy/${elem.room}/${elem.movie._id}/${elem.time}`} className="btn">buy</Link>
+                          <Link to={`/movies/${elem.movie._id}`} className="btn">more</Link>
+                        </div>
+                      </div>)
+                    ))
+                  }
                 </div>
-              ))
-              : <div className=""></div>
+              </div>
+            ))
           }
         </div>
       </div>
