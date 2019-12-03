@@ -33,6 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-transform: capitalize;
   span{
     position: relative;
     display: inline-block;
@@ -47,6 +48,10 @@
       z-index: -1;
     }
   }
+}
+
+.d-center{
+  justify-content: center;
 }
 
 .section-subtitle{

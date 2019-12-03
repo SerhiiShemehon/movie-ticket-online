@@ -1,20 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
-import { getMovies, getRoom, getSession} from "../actions";
+import { getMovies, getRoom, getSession, getSpace} from "../actions";
 
-import { Header, Footer } from "../components/layout";
-import { HomePage, Page404, NewsPage, MovieItemPage } from "../components/pages";
+import { Header, Footer, HomePage, Page404, NewsPage, MovieItemPage } from "../components";
 import { MoviesPageContainer, SchedulePageContainer, BayTicketPageContainer } from "../containers";
 
 import loading from "../images/loading.gif";
+
+export const history = createBrowserHistory();
 
 class Main extends React.Component {
   componentDidMount() {
     this.props.getMovies();
     this.props.getRoom();
     this.props.getSession();
+    this.props.getSpace();
   }
 
   render() {
@@ -35,6 +38,7 @@ class Main extends React.Component {
                       <Route path="/news/" component={NewsPage} />
                       <Route path="/movies/:id" component={MovieItemPage} exact />
                       <Route path="/buy/:room/:movie/:session" component={BayTicketPageContainer} exact />
+                      <Route path="*" component={Page404} />
                     </Switch>
                   : <div className="loading-holder">
                       <span className="loading"><img src={loading} alt="loading" /></span>
@@ -57,7 +61,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getMovies,
   getRoom,
-  getSession
+  getSession,
+  getSpace
 };
 
 export const MainContainer = connect(

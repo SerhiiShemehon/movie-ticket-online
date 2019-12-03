@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 import { BannerMoviesContainer, ListMoviesContainer } from "../../containers";
-import { ListNews } from "../layout";
+import { ListNews } from "../";
 
 export const HomePage = () => {
   return (

@@ -1,0 +1,74 @@
+.room-holder{
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+	padding: 100px 80px 20px;
+	border-radius: 20px;
+	position: relative;
+	&:before{
+		content: 'screen';
+		position: absolute;
+		top: 35px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	&:after{
+		content: '';
+		position: absolute;
+		top: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 80%;
+		height: 50px;
+		border-top: 5px solid #000;
+		border-radius: 50% 50% 0 0 / 30px 30px 0 0;
+	}
+	&.room-yellow{
+		background: lighten($yellow, 40%);
+	}
+	&.room-green{
+		background: lighten($green, 40%);
+	}
+	.row-item{
+		position: relative;
+		&>span{
+			font-size: 12px;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			transform: translateY(-50%);
+			top: 50%;
+			right: 102%;
+			position: absolute;
+			background: $bg-dark;
+			color: $white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			&:last-child{
+				right: auto;
+				left: 102%;
+			}
+		}
+	}
+	.place-list{
+		display: flex;
+		justify-content: center;
+	}
+	.place-item{
+		width: 30px;
+		height: 50px;
+		border-radius: 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
+		background: #eee;
+		margin: 0 5px 10px;
+		cursor: pointer;
+		transition: all 0.3s linear;
+		&:hover{
+			background: #ffa500;
+		}
+	}
+}

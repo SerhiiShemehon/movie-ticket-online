@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const SchedulePage = (props) => {
   const { sessionData, roomData, movies } = props;
   
+  
   const arrDate = [];
   sessionData.forEach( (item) => {
     let roomItem = roomData.find(room => room._id === item.room);
@@ -22,7 +23,9 @@ const SchedulePage = (props) => {
           arrDate[i].option.push({
             time: strTime,
             room: roomItem.name,
-            movie: movieItem
+            roomId: roomItem._id,
+            movie: movieItem,
+            costs: item.costs
           });
         }
       });
@@ -32,7 +35,9 @@ const SchedulePage = (props) => {
           option: [{
             time: strTime,
             room: roomItem.name,
-            movie: movieItem
+            roomId: roomItem._id,
+            movie: movieItem,
+            costs: item.costs
           }]
         })
       }
@@ -42,7 +47,9 @@ const SchedulePage = (props) => {
         option: [{
           time:	strTime,
           room: roomItem.name,
-          movie: movieItem
+          roomId: roomItem._id,
+          movie: movieItem,
+          costs: item.costs
         }]
       });
     }
@@ -77,8 +84,9 @@ const SchedulePage = (props) => {
                         <div className="text-holder">
                           <h3>{elem.movie.title}</h3>
                           <h4 className="time">{`time: ${elem.time}`}</h4>
+                          <h4 className="costs">{`costs: ${elem.costs}`}</h4>
                           <h4 className="hall">{`${elem.room} hall`}<span className={`room-${elem.room}`}></span></h4>
-                          <Link to={`/buy/${elem.room}/${elem.movie._id}/${elem.time}`} className="btn">buy</Link>
+                          <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.time}`} className="btn">buy</Link>
                           <Link to={`/movies/${elem.movie._id}`} className="btn">more</Link>
                         </div>
                       </div>)

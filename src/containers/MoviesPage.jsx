@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { AllMovies, FilterMovies } from "../components/layout";
+import { AllMovies, FilterMovies } from "../components";
 
 const MoviesPage = ({ movies }) => {
   const [currentMovies, setMovies] = useState(movies);

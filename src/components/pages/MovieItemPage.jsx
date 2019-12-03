@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-
 
 import { MovieItemContainer, CinemaSchedulesContainer } from '../../containers';
+import { history } from "../../routs/";
 
 export class MovieItemPage extends React.Component {
   render() {
@@ -12,7 +11,7 @@ export class MovieItemPage extends React.Component {
           <MovieItemContainer id={this.props.match.params.id} />  
           <CinemaSchedulesContainer id={this.props.match.params.id} />
           <div className="moovi-page-footer">
-            <Link to='/movies' className="btn">back</Link>
+            <button className="btn" onClick={()=>{history.goBack()}}>go back</button>
           </div>
         </div>
       </div>

@@ -18,27 +18,33 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 			newArrDate.forEach( (elem, i) => {
 				if( elem.date === strDate ){
 					isArr = true;
-					arrDate[i].timeArr.push({
+					arrDate[i].option.push({
 						time: strTime,
-						room: roomItem.name
+						room: roomItem.name,
+						roomId: roomItem._id,
+						costs: item.costs
 					});
 				}
 			});
 			if (!isArr){
 				arrDate.push({
 					date: strDate,
-					timeArr: [{
+					option: [{
 						time: strTime,
-						room: roomItem.name
+						room: roomItem.name,
+						roomId: roomItem._id,
+						costs: item.costs
 					}]
 				})
 			}
 		} else {
 			arrDate.push({
 				date: strDate,
-				timeArr: [{
+				option: [{
 					time:	strTime,
-					room: roomItem.name
+					room: roomItem.name,
+					roomId: roomItem._id,
+					costs: item.costs
 				}]
 			});
 		}
@@ -61,8 +67,11 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 						<li className="session-item" key={i}>
 							<div className="session-date">{item.date}:</div>
 							<ul className="session-time-list">
-								{item.timeArr.map((elem,j)=>(
-									<li className='session-time-item' key={j}><Link to={`buy/${elem.room}/${id}/${elem.time}`} className={`btn btn-${elem.room}`}>{elem.time}</Link></li>
+								{item.option.map((elem,j)=>(
+									<li className='session-time-item' key={j}>
+										<Link to={`/buy/${elem.roomId}/${id}/${elem.time}`} className={`btn btn-${elem.room}`}>{elem.time}</Link>
+										<span>{`Costs: ${elem.costs}`}</span>
+									</li>
 								))}
 							</ul>
 						</li>
