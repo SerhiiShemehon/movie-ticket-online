@@ -14,9 +14,9 @@ export const SPACE_LOADING = 'SPACE_LOADING';
 export const SPACE_DATA = 'SPACE_DATA';
 export const SPACE_ERROR = 'SPACE_ERROR';
 
-export const FILTER_MOVIES_DATA = 'FILTER_MOVIES_DATA';
-
-
+export const SPACE_SHADOW_LOADING = 'SPACE_SHADOW_LOADING';
+export const SPACE_SHADOW_DATA = 'SPACE_SHADOW_DATA';
+export const SPACE_SHADOW_ERROR = 'SPACE_SHADOW_ERROR';
 
 export const URL = 'http://subdomain.entony.fs.a-level.com.ua/api/';
 export const URL_MOVIE = URL + 'movie';

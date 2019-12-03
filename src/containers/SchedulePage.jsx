@@ -25,7 +25,8 @@ const SchedulePage = (props) => {
             room: roomItem.name,
             roomId: roomItem._id,
             movie: movieItem,
-            costs: item.costs
+            costs: item.costs,
+            session: item._id
           });
         }
       });
@@ -37,7 +38,8 @@ const SchedulePage = (props) => {
             room: roomItem.name,
             roomId: roomItem._id,
             movie: movieItem,
-            costs: item.costs
+            costs: item.costs,
+            session: item._id
           }]
         })
       }
@@ -49,7 +51,8 @@ const SchedulePage = (props) => {
           room: roomItem.name,
           roomId: roomItem._id,
           movie: movieItem,
-          costs: item.costs
+          costs: item.costs,
+          session: item._id
         }]
       });
     }
@@ -86,7 +89,7 @@ const SchedulePage = (props) => {
                           <h4 className="time">{`time: ${elem.time}`}</h4>
                           <h4 className="costs">{`costs: ${elem.costs}`}</h4>
                           <h4 className="hall">{`${elem.room} hall`}<span className={`room-${elem.room}`}></span></h4>
-                          <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.time}`} className="btn">buy</Link>
+                          <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.session}`} className="btn">buy</Link>
                           <Link to={`/movies/${elem.movie._id}`} className="btn">more</Link>
                         </div>
                       </div>)

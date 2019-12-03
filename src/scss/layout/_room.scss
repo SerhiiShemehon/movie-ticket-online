@@ -70,5 +70,12 @@
 		&:hover{
 			background: #ffa500;
 		}
+		&.free{
+			background: $green;
+		}
+		&.booked{
+			background: red;
+			cursor: no-drop;
+		}
 	}
 }
