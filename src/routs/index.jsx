@@ -37,7 +37,7 @@ class Main extends React.Component {
                       <Route path="/schedule/" component={SchedulePageContainer} exact />
                       <Route path="/news/" component={NewsPage} />
                       <Route path="/movies/:id" component={MovieItemPage} exact />
-                      <Route path="/buy/:room/:movie/:session" component={BayTicketPageContainer} exact />
+                      <Route path="/buy/:room/:movie/:session/:date" component={BayTicketPageContainer} exact />
                       <Route path="*" component={Page404} />
                     </Switch>
                   : <div className="loading-holder">

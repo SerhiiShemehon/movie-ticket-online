@@ -70,3 +70,5 @@ export const bannerMovies = {
 	'5cb84e106298621d47b961ca': 'http://i1.ytimg.com/vi/8JuGv5xI52w/maxresdefault.jpg',
 	'5cb84efb6298621d47b961cb': 'http://thumbs.dfs.ivi.ru/storage6/contents/2/b/6d4692172b6f6e814022bbaf5ad956.jpg'
 }
+
+export const MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']

@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
+import { MONTH } from "../constants";
+
 const CinemaSchedules = ({ sessionData, roomData, id }) => {
 	const currentSessionData = sessionData.filter((item) => item.movie === id)
 	const arrDate = [];
@@ -10,7 +12,7 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 		let roomItem = roomData.find(room => room._id === item.room);
 		let newArrDate = [...arrDate];
 		let date = new Date(item.date);
-		let strDate = date.getDate() + '/' + (date.getMonth() + 1);
+		let strDate = date.getDate() + ' ' + MONTH[date.getMonth()];
 		let strTime = date.getHours() + '-' + date.getMinutes();
 
 		if( arrDate.length ){
@@ -22,7 +24,9 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 						time: strTime,
 						room: roomItem.name,
 						roomId: roomItem._id,
-						costs: item.costs
+						costs: item.costs,
+						session: item._id,
+						date: item.date
 					});
 				}
 			});
@@ -33,7 +37,9 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 						time: strTime,
 						room: roomItem.name,
 						roomId: roomItem._id,
-						costs: item.costs
+						costs: item.costs,
+						session: item._id,
+						date: item.date
 					}]
 				})
 			}
@@ -44,7 +50,9 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 					time:	strTime,
 					room: roomItem.name,
 					roomId: roomItem._id,
-					costs: item.costs
+					costs: item.costs,
+					session: item._id,
+					date: item.date
 				}]
 			});
 		}
@@ -69,7 +77,7 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 							<ul className="session-time-list">
 								{item.option.map((elem,j)=>(
 									<li className='session-time-item' key={j}>
-										<Link to={`/buy/${elem.roomId}/${id}/${elem.time}`} className={`btn btn-${elem.room}`}>{elem.time}</Link>
+										<Link to={`/buy/${elem.roomId}/${id}/${elem.session}/${elem.date}`} className={`btn btn-${elem.room}`}>{elem.time}</Link>
 										<span>{`Costs: ${elem.costs}`}</span>
 									</li>
 								))}

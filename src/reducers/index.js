@@ -6,7 +6,6 @@ import { errorReducer } from "./errorReducer";
 import { sessionReducer } from "./sessionReducer";
 import { roomReducer } from "./roomReducer";
 import { spaceReducer } from "./spaceReducer";
-import { spaceShadowReducer } from './spaceShadowReducer';
 
 export const rootReducer = combineReducers({
   moviesReducer,
@@ -14,6 +13,5 @@ export const rootReducer = combineReducers({
   errorReducer,
   sessionReducer,
   roomReducer,
-  spaceReducer,
-  spaceShadowReducer
+  spaceReducer
 });

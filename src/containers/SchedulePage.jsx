@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
+import { MONTH } from "../constants";
+
 const SchedulePage = (props) => {
   const { sessionData, roomData, movies } = props;
   
@@ -12,7 +14,7 @@ const SchedulePage = (props) => {
     let movieItem = movies.find(movie => movie._id === item.movie);
     let newArrDate = [...arrDate];
     let date = new Date(item.date);
-    let strDate = date.getDate() + '/' + (date.getMonth() + 1);
+    let strDate = date.getDate() + ' ' + MONTH[date.getMonth()];
     let strTime = date.getHours() + '-' + date.getMinutes();
 
     if( arrDate.length ){
@@ -26,7 +28,8 @@ const SchedulePage = (props) => {
             roomId: roomItem._id,
             movie: movieItem,
             costs: item.costs,
-            session: item._id
+            session: item._id,
+						date: item.date
           });
         }
       });
@@ -39,7 +42,8 @@ const SchedulePage = (props) => {
             roomId: roomItem._id,
             movie: movieItem,
             costs: item.costs,
-            session: item._id
+            session: item._id,
+						date: item.date
           }]
         })
       }
@@ -52,7 +56,8 @@ const SchedulePage = (props) => {
           roomId: roomItem._id,
           movie: movieItem,
           costs: item.costs,
-          session: item._id
+          session: item._id,
+					date: item.date
         }]
       });
     }
@@ -89,7 +94,7 @@ const SchedulePage = (props) => {
                           <h4 className="time">{`time: ${elem.time}`}</h4>
                           <h4 className="costs">{`costs: ${elem.costs}`}</h4>
                           <h4 className="hall">{`${elem.room} hall`}<span className={`room-${elem.room}`}></span></h4>
-                          <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.session}`} className="btn">buy</Link>
+                          <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.session}/${elem.date}`} className="btn">buy</Link>
                           <Link to={`/movies/${elem.movie._id}`} className="btn">more</Link>
                         </div>
                       </div>)
