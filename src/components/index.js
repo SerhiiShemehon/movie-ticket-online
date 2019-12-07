@@ -4,6 +4,7 @@ export * from './layout/ListNews';
 export * from './layout/PrimaryNav';
 export * from './layout/AllMovies';
 export * from './layout/FilterMovies';
+export * from './layout/ModalPlaceList';
 
 export * from './pages/HomePage';
 export * from './pages/Page404';

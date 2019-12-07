@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import axios from "axios";
 
-import { Page404 } from "../components";
+import { Page404, ModalPlaceList } from "../components";
 
 import { MONTH, URL_SPACE_SHADOW } from "../constants";
 import loading from "../images/loading.gif";
@@ -17,22 +17,33 @@ const BayTicketPage = (props) => {
 
   const [sortNpacesHall, setSortNpacesHall] = useState([]);
 
+  const [showModal, setShowModal] = useState(false);
+
   const [spaceShadowData, setSpaceShadowData] = useState([]);
   const [isErrorSpaceShadow, setIsErrorSpaceShadow] = useState(false);
   const [isLoadingSpaceShadow, setIsLoadingSpaceShadow] = useState(false);
 
   const [bookPlace, setBookPlace] = useState([]);
+  const [limit, setLimit] = useState(false);
 
   const selectPlase = (row, place, elem) => {
     if( !elem.target.classList.contains('booked') ){
       if(elem.target.classList.contains('book')){
-        let i = bookPlace.indexOf(`row ${row+1} place ${place+1}`);
+        let i = bookPlace.indexOf(`ряд ${row+1} место ${place+1}`);
         bookPlace.splice(i, 1);
         setBookPlace([...bookPlace]);
+        elem.target.classList.toggle('book');
       } else {
-        setBookPlace([...bookPlace, `row ${row+1} place ${place+1}`]);
+        if (bookPlace.length < 6) {
+          setBookPlace([...bookPlace, `ряд ${row+1} место ${place+1}`]);
+          elem.target.classList.toggle('book');
+        } else {
+          setLimit(true);
+          setTimeout(() => {
+            setLimit(false);
+          }, 1500);
+        }
       }
-      elem.target.classList.toggle('book');
     };
   };
 
@@ -61,6 +72,10 @@ const BayTicketPage = (props) => {
         spaceShadowError();
       })
   };
+
+  const handleClickBay = () => {
+    setShowModal(!showModal);
+  }
 
   useEffect(() => {
     getSpaceShadow();
@@ -139,9 +154,10 @@ const BayTicketPage = (props) => {
               <h1 className="section-title d-center">{movie.title}</h1>
               <div className="room-nav">
                 <h5>{formatDate}</h5>
-                <button className="btn">bay</button>
+                <button className="btn" onClick={handleClickBay}>забронировать</button>
               </div>
               <div className={`room-${room.name} room-holder`}>
+                {limit && <span className="limit">максимум 6 мест</span>}
                 <ul className="row-list">
                   {
                     sortNpacesHall.map((item,i) => (
@@ -160,22 +176,7 @@ const BayTicketPage = (props) => {
                   }
                 </ul>
               </div>
-              <div className="modal-holder">
-                <div className="modal-section">
-                  {bookPlace.length 
-                    ? <div className="modal-block">
-                        <h3>You choosed</h3>
-                        <ul>
-                          {bookPlace.map((item, i)=>(
-                            <li key={i}>{item}</li>
-                          ))}
-                        </ul>
-
-                      </div>
-                    : <h3>You have not chosen anything</h3>
-                  }
-                </div>
-              </div>
+              {showModal && <ModalPlaceList bookPlace={bookPlace} handleClickBay={handleClickBay}/>}
             </div>
           </div>
         : <div className="loading-holder">

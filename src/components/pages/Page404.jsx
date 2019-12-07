@@ -5,8 +5,8 @@ export const Page404 = () => {
     <div className="container">
       <div className="error-holder">
         <div className="error-block">
-          <h1>Error</h1>
-          <p>Sorry, an error occurred! Please inform the administrator or try again later!</p>
+          <h1>Ошибка</h1>
+          <p>К сожалению, произошла ошибка! Пожалуйста, сообщите администратору или повторите попытку позже!</p>
         </div>
       </div>
     </div>

@@ -4,8 +4,8 @@ export const NewsPage = () => {
   return (
     <div className="news-page">
       <div className="news-holder">
-        <h1>Sorry, no news!</h1>
-        <p>You went to buy tickets and not read the news!</p>
+        <h1>Извините, новостей нет!</h1>
+        <p>Вы пришли покупать билеты, а не читать новости!</p>
       </div>
     </div>
   )

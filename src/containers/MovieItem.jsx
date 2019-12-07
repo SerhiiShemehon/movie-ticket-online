@@ -24,22 +24,22 @@ const MovieItem = (props) => {
   return (
       movie 
       ? <div className="movie-holder">
-        <h1 className="section-title">{movie.title}<button className='btn btn-green' onClick={handleClickToSession}>ticket</button></h1>
+        <h1 className="section-title">{movie.title}<button className='btn btn-green' onClick={handleClickToSession}>купить билет</button></h1>
           <div className="option-holder">
             <div className="img-holder">
               <img src={movie.poster} alt={movie.title}/>
             </div>
             <div className="text-holder">
-              <OptionItem title='Country' content={movie.country} />
-              <OptionItem title='Language' content={movie.language} />
-              <OptionItem title='Genre' content={movie.genre} />
-              <OptionItem title='Actors' content={movie.actors} />
-              <OptionItem title='Long' content={movie.long} />
-              <OptionItem title='Description' content={movie.description} />
+              <OptionItem title='Страна' content={movie.country} />
+              <OptionItem title='Язык' content={movie.language} />
+              <OptionItem title='Жанр' content={movie.genre} />
+              <OptionItem title='Актеры' content={movie.actors} />
+              <OptionItem title='Длительность' content={movie.long} />
+              <OptionItem title='Описание' content={movie.description} />
             </div>
           </div>
           <div className="trailer-block">
-            <h2 className="section-title"><span>Trailer</span></h2>
+            <h2 className="section-title"><span>Трейлер</span></h2>
             <div className="trailer">
               <iframe src={movie.trailer} title={movie.title}></iframe>
             </div>

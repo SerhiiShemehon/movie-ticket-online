@@ -71,7 +71,7 @@ const SchedulePage = (props) => {
   return (
     <div className="page-holder">
       <div className="container">
-        <h1 className="section-title"><span>Schedule</span></h1>
+        <h1 className="section-title"><span>Расписание</span></h1>
         <nav className="nav-date">
           {
             arrDate.length && arrDate.map((item, i) => (
@@ -94,8 +94,8 @@ const SchedulePage = (props) => {
                           <h4 className="time">{`time: ${elem.time}`}</h4>
                           <h4 className="costs">{`costs: ${elem.costs}`}</h4>
                           <h4 className="hall">{`${elem.room} hall`}<span className={`room-${elem.room}`}></span></h4>
-                          <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.session}/${elem.date}`} className="btn">buy</Link>
-                          <Link to={`/movies/${elem.movie._id}`} className="btn">more</Link>
+                          <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.session}/${elem.date}`} className="btn">купить</Link>
+                          <Link to={`/movies/${elem.movie._id}`} className="btn">УЗНАТЬ БОЛЬШЕ</Link>
                         </div>
                       </div>)
                     ))

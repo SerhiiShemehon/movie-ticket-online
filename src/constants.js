@@ -32,23 +32,23 @@ export const URL_SPACE_SHADOW = URL + 'movie/space-shadow';
 
 export const NEWS = [
 	{
-		title: 'Why Rian Johnson Is Thankful For Negative Star Wars: The Last Jedi Comments',
-		description: 'Star Wars is one of the most beloved movie franchises of all time, and is showing no real signs of slowing down anytime soon.',
+		title: 'Питер Сарсгаард сыграет в "Бэтмене"',
+		description: 'В актерском составе фильма "Бэтмен" произошло очередное пополнение',
 		link: '/news'
 	},
 	{
-		title: 'The Batman’s Zoe Kravitz Cut Her Hair, And DC Fans Are Freaking',
-		description: 'Matt Reeves’ The Batman is getting ready to start rolling cameras in the next few months, but there are a few preparations the actors are doing to get ready to enter Gotham City.',
+		title: '"Черную Вдову" обвинили в плагиате известной игры',
+		description: 'В чем суть?',
 		link: '/news'
 	},
 	{
-		title: 'How Much Money Bad Boys For Life Could Make Opening Weekend',
-		description: 'There are still some huge movies yet to come in 2019, but as we approach the end of the year, it’s time to start looking ahead to 2020.',
+		title: 'Марго Робби в мини платье презентовала фильм о Харли Квин',
+		description: 'Голливудская звезда планирует пополнение в семье',
 		link: '/news'
 	},
 	{
-		title: 'Colin Trevorrow Is Donating His Star Wars: The Rise Of Skywalker Residuals To A Great Cause',
-		description: 'Having already left his mark on the Jurassic Park franchise with 2015’s Jurassic World, Colin Trevorrow was supposed to jump to a galaxy far, far away and direct Star Wars: Episode IX, which we now know as The Rise of Skywalker.',
+		title: '"Веном 2" может получить рейтинг R после громкого успеха "Джокера"',
+		description: 'Продюсер "Венома" считает, что "взрослый" рейтинг дает создателям больше творческой свободы, и это не остается без внимания зрителей',
 		link: '/news'
 	},
 ]
@@ -71,4 +71,4 @@ export const bannerMovies = {
 	'5cb84efb6298621d47b961cb': 'http://thumbs.dfs.ivi.ru/storage6/contents/2/b/6d4692172b6f6e814022bbaf5ad956.jpg'
 }
 
-export const MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+export const MONTH = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']

@@ -20,7 +20,7 @@ export const AllMovies = ({ movies }) => {
   return (
     <div className="movies-bock-list">
       <div className="search-block">
-        <label htmlFor="search">Search:</label>
+        <label htmlFor="search">Поиск:</label>
         <input id="search" type="text" value={curentValue} onChange={hendleChangeSearch} />
       </div>
       <div className="box-list">
@@ -36,7 +36,7 @@ export const AllMovies = ({ movies }) => {
               </Link>
             </div>
           ))
-          : <h2 className="not-movie">Sorry, there is no movie by these parameters.</h2>
+          : <h2 className="not-movie">Извините, фильма выбранным параметрам нет.</h2>
         }
       </div>
     </div>

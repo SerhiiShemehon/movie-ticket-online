@@ -13,7 +13,7 @@ const RadioBlock = (props) => {
       <h3><span>{props.title}</span></h3>
       <div className="filter-item" key="0">
         <input className="not-filter" type="radio" name={props.name} id={`all-${props.name}`} value={`all-${props.name}`} checked={radioChecked === `all-${props.name}`} onChange={hendleChangeRadio} />
-        <label htmlFor={`all-${props.name}`}>{`All ${props.name}`}<span></span></label>
+        <label htmlFor={`all-${props.name}`}>все<span></span></label>
       </div>
       {
         props.genreArr.map((item, i) => (
@@ -47,8 +47,8 @@ export const FilterMovies = ({ movies, hendleParentFilter }) => {
 
   return (
       <div className="filter-sidebar">
-        <RadioBlock title='Genre' name='genre' genreArr={genreArr} hendleParentFilter={hendleParentFilter} />
-        <RadioBlock title='Country' name='country' genreArr={countryArr} hendleParentFilter={hendleParentFilter} />
+        <RadioBlock title='Жанр' name='genre' genreArr={genreArr} hendleParentFilter={hendleParentFilter} />
+        <RadioBlock title='Страна' name='country' genreArr={countryArr} hendleParentFilter={hendleParentFilter} />
       </div>
   );
 }

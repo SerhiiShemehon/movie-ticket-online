@@ -14,7 +14,7 @@
 	border-radius: 20px;
 	position: relative;
 	&:before{
-		content: 'screen';
+		content: 'экран';
 		position: absolute;
 		top: 35px;
 		left: 50%;
@@ -36,6 +36,18 @@
 	}
 	&.room-green{
 		background: lighten($green, 40%);
+	}
+	.limit{
+		position: absolute;
+		top: 60px;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 14px;
+		display: block;
+		padding: 5px 10px;
+		border-radius: 5px;
+		background: rgba(red, 0.7);
+		color: $white;
 	}
 	.row-item{
 		position: relative;

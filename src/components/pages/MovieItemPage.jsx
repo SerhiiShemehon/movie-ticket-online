@@ -11,7 +11,7 @@ export class MovieItemPage extends React.Component {
           <MovieItemContainer id={this.props.match.params.id} />  
           <CinemaSchedulesContainer id={this.props.match.params.id} />
           <div className="moovi-page-footer">
-            <button className="btn" onClick={()=>{history.goBack()}}>go back</button>
+            <button className="btn" onClick={() => { history.goBack() }}>вернутся назад</button>
           </div>
         </div>
       </div>

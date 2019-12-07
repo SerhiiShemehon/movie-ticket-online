@@ -60,12 +60,12 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 
 	return (
 		<div className="sessions-block" id="sessions-block">
-			<h2 className="section-title"><span>Cinema Schedule</span></h2>
+			<h2 className="section-title"><span>Расписание</span></h2>
 			<div className="d-flex">
-				<h6 className="section-subtitle">Choose Day And Time</h6>
+				<h6 className="section-subtitle">Выберите день и время</h6>
 				<ul className="rooms-color">
 					{roomData.map((item,i) => (
-						<li key={i}><span className={`room-${item.name}`}></span>{`${item.name} hall`}</li>
+						<li key={i}><span className={`room-${item.name}`}></span>{`${item.name} зал`}</li>
 					))}
 				</ul>
 			</div>
@@ -84,7 +84,7 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 							</ul>
 						</li>
 					))
-					: <li className="not-session">Sorry, the movie is not shown!</li>}
+					: <li className="not-session">Извините, но на данный фильм нет сеансов!</li>}
 			</ul>
 		</div>
 	);

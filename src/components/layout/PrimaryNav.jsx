@@ -6,20 +6,20 @@ export const PrimaryNav = () => {
   let menuList = [
     {
       link: '/',
-      title: 'Home'
+      title: 'Главная'
     },
     {
       link: '/movies',
-      title: 'Movies'
+      title: 'Фильмы'
     },
     {
       link: '/schedule',
-      title: 'Schedule'
+      title: 'Расписания'
     }
     ,
     {
       link: '/news',
-      title: 'News'
+      title: 'Новости'
     }
   ];
 
@@ -28,7 +28,7 @@ export const PrimaryNav = () => {
       {menuList.map((item, i) => {
         return (
           <li key={i}>
-            <NavLink exact to={item.link}>{item.title}</NavLink >
+            <NavLink exact to={item.link} activeClassName="active">{item.title}</NavLink>
           </li>
         );
       })}

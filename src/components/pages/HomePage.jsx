@@ -11,11 +11,11 @@ export const HomePage = () => {
       <BannerMoviesContainer />
       <div className="container">
         <div className="section-holder">
-          <h2 className="section-title"><span>Now Coming</span> <Link to="/movies" className="btn btn-green">More</Link></h2>
+          <h2 className="section-title"><span>Сейчас идет</span> <Link to="/movies" className="btn btn-green">Больше</Link></h2>
           <ListMoviesContainer quantityMovies="4" />
         </div>
         <div className="section-holder">
-          <h2 className="section-title"><span>News</span><Link to="/news" className="btn btn-green">More</Link></h2>
+          <h2 className="section-title"><span>Новости кино</span><Link to="/news" className="btn btn-green">Больше</Link></h2>
           <ListNews />
         </div>
       </div>
