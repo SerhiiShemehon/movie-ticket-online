@@ -78,7 +78,7 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 								{item.option.map((elem,j)=>(
 									<li className='session-time-item' key={j}>
 										<Link to={`/buy/${elem.roomId}/${id}/${elem.session}/${elem.date}`} className={`btn btn-${elem.room}`}>{elem.time}</Link>
-										<span>{`Costs: ${elem.costs}`}</span>
+										<span>{`Цена: ${elem.costs}`}</span>
 									</li>
 								))}
 							</ul>
