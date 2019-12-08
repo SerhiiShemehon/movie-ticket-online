@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { MovieItemContainer, CinemaSchedulesContainer } from '../../containers';
 import { history } from "../../routs/";
 
-export class MovieItemPage extends React.Component {
-  render() {
-    return (
-      <div className="movie-page">
-        <div className="container">
-          <MovieItemContainer id={this.props.match.params.id} />  
-          <CinemaSchedulesContainer id={this.props.match.params.id} />
-          <div className="moovi-page-footer">
-            <button className="btn" onClick={() => { history.goBack() }}>вернутся назад</button>
-          </div>
+export const MovieItemPage = (props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return (
+    <div className="movie-page">
+      <div className="container">
+        <MovieItemContainer id={props.match.params.id} />  
+        <CinemaSchedulesContainer id={props.match.params.id} />
+        <div className="moovi-page-footer">
+          <button className="btn" onClick={() => { history.goBack() }}>вернутся назад</button>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
 }

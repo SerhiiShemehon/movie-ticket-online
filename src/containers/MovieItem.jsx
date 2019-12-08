@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 
 const OptionItem = (props) => {
@@ -14,7 +14,11 @@ const OptionItem = (props) => {
 
 const MovieItem = (props) => {
   const { movies, id } = props;
-  const movie = movies.find((item) => (item._id === id))
+  const [movie, setMovie] = useState(false);
+
+  useEffect(() => {
+    setMovie(movies.find((item) => (item._id === id)))
+  });
 
   const handleClickToSession = () => {
     const sessionsBlock = document.getElementById('sessions-block');

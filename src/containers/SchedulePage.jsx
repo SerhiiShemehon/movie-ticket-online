@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
@@ -6,6 +6,10 @@ import { MONTH } from "../constants";
 
 const SchedulePage = (props) => {
   const { sessionData, roomData, movies } = props;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   
   const arrDate = [];
@@ -69,7 +73,7 @@ const SchedulePage = (props) => {
   }
 
   return (
-    <div className="page-holder">
+    <div className="page-holder custom-p">
       <div className="container">
         <h1 className="section-title"><span>Расписание</span></h1>
         <nav className="nav-date">
@@ -91,9 +95,9 @@ const SchedulePage = (props) => {
                         <div className="img-holder" style={{ 'backgroundImage': `url(${elem.movie.poster})` }}></div>
                         <div className="text-holder">
                           <h3>{elem.movie.title}</h3>
-                          <h4 className="time">{`time: ${elem.time}`}</h4>
-                          <h4 className="costs">{`costs: ${elem.costs}`}</h4>
-                          <h4 className="hall">{`${elem.room} hall`}<span className={`room-${elem.room}`}></span></h4>
+                          <h4 className="time">{`время: ${elem.time}`}</h4>
+                          <h4 className="costs">{`цена: ${elem.costs}`}</h4>
+                          <h4 className="hall">{`${elem.room} зал`}<span className={`room-${elem.room}`}></span></h4>
                           <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.session}/${elem.date}`} className="btn">купить</Link>
                           <Link to={`/movies/${elem.movie._id}`} className="btn">УЗНАТЬ БОЛЬШЕ</Link>
                         </div>

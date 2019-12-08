@@ -8,6 +8,9 @@
 
 .page-holder{
   padding: 50px 0;
+  &.custom-p{
+    padding: 100px 0 50px;
+  }
   .section-title{
     margin-bottom: 50px;
   }

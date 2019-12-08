@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 import { PrimaryNav } from './PrimaryNav';
 
-import avatar from "../../images/avatar.png";
-
 export const Header = () => {
   return (
     <header className="header">
@@ -19,13 +17,6 @@ export const Header = () => {
         <nav className={`nav-holder`}>
           <PrimaryNav></PrimaryNav>
         </nav>
-
-
-        <div className="profile-block">
-          <Link to="/profile">
-            <img src={avatar} alt="avatar" />
-          </Link>
-        </div>
 
       </div>
     </header>

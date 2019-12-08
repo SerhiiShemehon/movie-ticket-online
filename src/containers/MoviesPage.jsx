@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { AllMovies, FilterMovies } from "../components";
 
 const MoviesPage = ({ movies }) => {
   const [currentMovies, setMovies] = useState(movies);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   const hendleFilter = () => {
     const filter = document.querySelectorAll('.filter-block input:not(.not-filter):checked');

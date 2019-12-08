@@ -78,6 +78,7 @@ const BayTicketPage = (props) => {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getSpaceShadow();
   },[]);
 

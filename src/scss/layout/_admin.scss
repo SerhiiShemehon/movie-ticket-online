@@ -1,0 +1,88 @@
+.login-holder {
+  height: calc(100vh - 125px);
+  display: flex;
+  .login-block {
+    margin: auto;
+    max-width: 700px;
+    background: #eee;
+    padding: 20px 50px;
+    border-radius: 20px;
+    font-size: 35px;
+    position: relative;
+    .error-data{
+      position: absolute;
+      bottom: 105%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: red;
+      color: $white;
+      font-size: 16px;
+    }
+  }
+}
+.movie-list{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  min-height: 300px;
+}
+.movie-item{
+  width: 100%;
+  max-width: 10%;
+  padding: 0 15px;
+  margin-bottom: 30px;
+  position: relative;
+  .img-holder{
+    position: relative;
+    padding-top: 125%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    img{
+      width: 100%;
+    }
+  }
+  h3{
+    margin: 0 0 5px;
+    font-size: 10px;
+  }
+}
+.movie-remove {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  background: red;
+  z-index: 2;
+  &:before, &:after{
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: $black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+  }
+  &:before{
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  &:after{
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+.add-holder{
+  padding: 50px 0;
+  max-width: 700px;
+  margin: 0 auto;
+}

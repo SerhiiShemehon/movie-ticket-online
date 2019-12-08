@@ -5,3 +5,4 @@ export * from './MovieItem';
 export * from './MoviesPage';
 export * from './SchedulePage';
 export * from './BayTicketPage';
+export * from './AdminHolder';

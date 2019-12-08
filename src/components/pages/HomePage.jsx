@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import { Link } from "react-router-dom";
 
@@ -6,6 +6,9 @@ import { BannerMoviesContainer, ListMoviesContainer } from "../../containers";
 import { ListNews } from "../";
 
 export const HomePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <React.Fragment>
       <BannerMoviesContainer />
