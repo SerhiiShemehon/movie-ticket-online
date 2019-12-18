@@ -31,6 +31,5 @@ export const errorReducer = (state = INITIAL_DATA, action) => {
     default: {
       return state;
     }
-
   }
 }

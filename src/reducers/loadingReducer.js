@@ -31,6 +31,5 @@ export const loadingReducer = (state = INITIAL_DATA, action) => {
     default: {
       return state;
     }
-      
   }
 }

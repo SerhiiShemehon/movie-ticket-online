@@ -4,7 +4,7 @@ import { transliterate } from "../../default";
 
 const RadioBlock = (props) => {
   const [radioChecked, setRadioChecked] = useState('')
-  const hendleChangeRadio = (event) => {
+  const handleChangeRadio = (event) => {
     setRadioChecked(event.target.value);
     props.hendleParentFilter();
   }
@@ -12,13 +12,26 @@ const RadioBlock = (props) => {
     <div className="filter-block">
       <h3><span>{props.title}</span></h3>
       <div className="filter-item" key="0">
-        <input className="not-filter" type="radio" name={props.name} id={`all-${props.name}`} value={`all-${props.name}`} checked={radioChecked === `all-${props.name}`} onChange={hendleChangeRadio} />
+        <input 
+          className="not-filter" 
+          type="radio" 
+          name={props.name} 
+          id={`all-${props.name}`} 
+          value={`all-${props.name}`} 
+          checked={radioChecked === `all-${props.name}`} 
+          onChange={handleChangeRadio} />
         <label htmlFor={`all-${props.name}`}>все<span></span></label>
       </div>
       {
         props.genreArr.map((item, i) => (
           <div className="filter-item" key={i+1}>
-            <input type="radio" name={props.name} id={transliterate(item)} value={item} checked={radioChecked === item} onChange={hendleChangeRadio} />
+            <input 
+              type="radio" 
+              name={props.name} 
+              id={transliterate(item)} 
+              value={item} 
+              checked={radioChecked === item} 
+              onChange={handleChangeRadio} />
             <label htmlFor={transliterate(item)}>{item}<span></span></label>
           </div>
         ))

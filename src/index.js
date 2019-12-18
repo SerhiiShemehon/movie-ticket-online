@@ -3,19 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from "react-router-dom";
 
-
-import { store } from './store';
-import { MainContainer, history } from "./routs/";
-
+import { store, history } from './store';
+import { PageContainer } from "./routes";
 
 import './scss/style.scss';
-
-
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history ={history}>
-      <MainContainer></MainContainer>
+      <PageContainer />
     </Router>
   </Provider>,
   document.getElementById('root')

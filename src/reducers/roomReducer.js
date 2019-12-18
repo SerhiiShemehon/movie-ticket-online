@@ -37,6 +37,5 @@ export const roomReducer = (state = INITIAL_DATA, action) => {
     default: {
       return state;
     }
-
   }
 }

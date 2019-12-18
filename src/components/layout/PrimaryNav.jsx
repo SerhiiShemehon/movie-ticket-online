@@ -15,8 +15,7 @@ export const PrimaryNav = () => {
     {
       link: '/schedule',
       title: 'Расписания'
-    }
-    ,
+    },
     {
       link: '/news',
       title: 'Новости'
@@ -25,13 +24,12 @@ export const PrimaryNav = () => {
 
   return (
     <ul className="menu">
-      {menuList.map((item, i) => {
-        return (
+      {menuList.map((item, i) => (
           <li key={i}>
             <NavLink exact to={item.link} activeClassName="active">{item.title}</NavLink>
           </li>
-        );
-      })}
+        )
+      )}
     </ul>
   );
 }

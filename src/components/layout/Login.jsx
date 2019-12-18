@@ -5,15 +5,15 @@ export const Login = (props) => {
   const [passwordValue, setPasswordValue] = useState('');
   const [error, setError] = useState(false);
 
-  const hendleChangeName = (event) => {
+  const handleChangeName = (event) => {
     setNameValue(event.target.value);
   };
 
-  const hendleChangePassword = (event) => {
+  const handleChangePassword = (event) => {
     setPasswordValue(event.target.value);
   };
 
-  const hendleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (nameValue === props.user && passwordValue === props.password){
       props.showAdmin();
@@ -30,14 +30,14 @@ export const Login = (props) => {
       <div className="login-block">
         {error && <span className="error-data">имя или пароль не подходят</span>}
         <h1>Введите имя и пароль</h1>
-        <form onSubmit={hendleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="form-block">
             <label htmlFor="name">Имя:</label>
-            <input required id="name" type="text" value={nameValue} onChange={hendleChangeName} />
+            <input required id="name" type="text" value={nameValue} onChange={handleChangeName} />
           </div>
           <div className="form-block">
             <label htmlFor="password">Пароль:</label>
-            <input required id="password" type="password" value={passwordValue} onChange={hendleChangePassword} />
+            <input required id="password" type="password" value={passwordValue} onChange={handleChangePassword} />
           </div>
           <div className="text-center">
             <button type="submit" className="btn">войти</button>

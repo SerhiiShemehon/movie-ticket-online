@@ -13,11 +13,9 @@ export const Header = () => {
             Ticket <span>ON</span>
           </Link>
         </div>
-
-        <nav className={`nav-holder`}>
-          <PrimaryNav></PrimaryNav>
+        <nav className="nav-holder">
+          <PrimaryNav />
         </nav>
-
       </div>
     </header>
   );

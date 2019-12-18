@@ -19,16 +19,14 @@ export const SPACE_SHADOW_DATA = 'SPACE_SHADOW_DATA';
 export const SPACE_SHADOW_ERROR = 'SPACE_SHADOW_ERROR';
 
 export const URL = 'http://subdomain.entony.fs.a-level.com.ua/api/';
-export const URL_MOVIE = URL + 'movie';
-export const URL_SESSION = URL + 'movie/session';
-export const URL_ROOM = URL + 'movie/room';
-export const URL_SPACE = URL + 'movie/space';
-export const URL_SPACE_SHADOW = URL + 'movie/space-shadow';
+export const URL_MOVIE = `${URL}movie`;
+export const URL_SESSION = `${URL}movie/session`;
+export const URL_ROOM = `${URL}movie/room`;
+export const URL_SPACE = `${URL}movie/space`;
+export const URL_SPACE_SHADOW = `${URL}movie/space-shadow`;
 
-
-
-
-
+export const USER = 'admin';
+export const USER_PASSWORD = '12345';
 
 export const NEWS = [
 	{

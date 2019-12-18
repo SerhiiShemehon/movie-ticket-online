@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import { Login } from "../";
 import { AdminHolderContainer } from "../../containers/";
+import { USER, USER_PASSWORD } from "../../constants";
 
 export const AdminPage = (props) => {
   const [showAdmin, setShowAdmin] = useState(false);
@@ -15,7 +16,7 @@ export const AdminPage = (props) => {
       {
         showAdmin 
           ? <AdminHolderContainer />
-          : <Login user="admin" password="12345" showAdmin={handleShowAdmin} />
+          : <Login user={USER} password={USER_PASSWORD} showAdmin={handleShowAdmin} />
       }
     </div>
   );

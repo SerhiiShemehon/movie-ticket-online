@@ -3,7 +3,6 @@ export const randomInteger = (min, max) => {
   return Math.floor(rand);
 }
 
-
 export const transliterate = (
   function () {
     let

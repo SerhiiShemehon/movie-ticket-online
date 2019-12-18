@@ -9,19 +9,19 @@ export class ModalPlaceList extends React.Component {
     secondModal: false
   };
 
-  hendleChangeName = (event) => {
+  handleChangeName = (event) => {
     this.setState({
       nameValue: event.target.value
     });
   };
 
-  hendleChangeEmail = (event) => {
+  handleChangeEmail = (event) => {
     this.setState({
       emailValue: event.target.value
     });
   };
 
-  hendleSubmit = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
       secondModal: true
@@ -50,26 +50,26 @@ export class ModalPlaceList extends React.Component {
           {!secondModal
             ? bookPlace.length
               ? <div className="modal-block">
-                <h3 className="text-center">Вы выбрали</h3>
-                <ul className="text-center place-list">
-                  {bookPlace.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-                <form className="form" onSubmit={this.hendleSubmit}>
-                  <div className="form-block">
-                    <label htmlFor="name">Имя:</label>
-                    <input required id="name" type="text" value={nameValue} onChange={this.hendleChangeName} />
-                  </div>
-                  <div className="form-block">
-                    <label htmlFor="email">Эл. адрес:</label>
-                    <input required id="email" type="email" value={emailValue} onChange={this.hendleChangeEmail} />
-                  </div>
-                  <div className="text-center">
-                    <button type="submit" className="btn">купить</button>
-                  </div>
-                </form>
-              </div>
+                  <h3 className="text-center">Вы выбрали</h3>
+                  <ul className="text-center place-list">
+                    {bookPlace.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                  <form className="form" onSubmit={this.handleSubmit}>
+                    <div className="form-block">
+                      <label htmlFor="name">Имя:</label>
+                      <input required id="name" type="text" value={nameValue} onChange={this.handleChangeName} />
+                    </div>
+                    <div className="form-block">
+                      <label htmlFor="email">Эл. адрес:</label>
+                      <input required id="email" type="email" value={emailValue} onChange={this.handleChangeEmail} />
+                    </div>
+                    <div className="text-center">
+                      <button type="submit" className="btn">купить</button>
+                    </div>
+                  </form>
+                </div>
               : <h3 className="text-center">Вы ничего не выбрали</h3>
             : <div className="modal-block">
                 <h3 className="text-center">{`${nameValue} cпасибо за покупку!`}</h3>

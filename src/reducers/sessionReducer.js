@@ -46,6 +46,5 @@ export const sessionReducer = (state = INITIAL_DATA, action) => {
     default: {
       return state;
     }
-
   }
 }
