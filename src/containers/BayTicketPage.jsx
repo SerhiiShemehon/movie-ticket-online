@@ -7,15 +7,51 @@ import { Page404, ModalPlaceList } from "../components";
 import { MONTH, URL_SPACE_SHADOW } from "../constants";
 import loading from "../images/loading.gif";
 
-const BayTicketPage = (props) => {
-  const { roomData, isLoadingRoom, isErrorRoom, movies} = props;
+const PlaceItem = ({ booked, free, i, j, place, selectPlase }) => {
+  return (
+    <li 
+      className={`place-item ${booked ? 'booked' : ''} ${free ? 'free' : ''}`} 
+      key={`${i}-${j}`} 
+      onClick={(elem) => selectPlase(i, j, elem)}
+    >
+      {place}
+    </li>
+  );
+};
 
-  const movie = movies.find(item => item._id === props.match.params.movie);
-  const room = roomData.find(item => item._id === props.match.params.room);
-  const date = new Date(props.match.params.date);
+const RowItem = ({row, option, i, selectPlase}) => {
+  return (
+    <li className="row-item">
+      <span>{row}</span>
+      <ul className="place-list">
+        {
+          option.map((elem, j) => (
+            <PlaceItem 
+              booked={elem.booked} 
+              free={elem.free} 
+              i={i} 
+              j={j} 
+              elem={elem} 
+              place={elem.place} 
+              selectPlase={selectPlase}
+            />
+          ))
+        }
+      </ul>
+      <span>{row}</span>
+    </li>
+  );
+};
+
+const BayTicketPage = ({ roomData, isLoadingRoom, isErrorRoom, movies, match }) => {
+  const { movie: movieID, room: roomId, date: dateAll, session } = match.params;
+
+  const movie = movies.find(item => item._id === movieID);
+  const room = roomData.find(item => item._id === roomId);
+  const date = new Date(dateAll);
   const formatDate = date.getDate() + ' ' + MONTH[date.getMonth()] + ' ' + date.getHours() + '-' + date.getMinutes();
 
-  const [sortNpacesHall, setSortNpacesHall] = useState([]);
+  const [sortSpacesHall, setSortSpacesHall] = useState([]);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -23,19 +59,19 @@ const BayTicketPage = (props) => {
   const [isErrorSpaceShadow, setIsErrorSpaceShadow] = useState(false);
   const [isLoadingSpaceShadow, setIsLoadingSpaceShadow] = useState(false);
 
-  const [bookPlace, setBookPlace] = useState([]);
+  const [bookedPlace, setBookedPlace] = useState([]);
   const [limit, setLimit] = useState(false);
 
   const selectPlase = (row, place, elem) => {
     if( !elem.target.classList.contains('booked') ){
       if(elem.target.classList.contains('book')){
-        let i = bookPlace.indexOf(`ряд ${row+1} место ${place+1}`);
-        bookPlace.splice(i, 1);
-        setBookPlace([...bookPlace]);
+        let i = bookedPlace.indexOf(`ряд ${row+1} место ${place+1}`);
+        bookedPlace.splice(i, 1);
+        setBookedPlace([...bookedPlace]);
         elem.target.classList.toggle('book');
       } else {
-        if (bookPlace.length < 6) {
-          setBookPlace([...bookPlace, `ряд ${row+1} место ${place+1}`]);
+        if (bookedPlace.length < 6) {
+          setBookedPlace([...bookedPlace, `ряд ${row+1} место ${place+1}`]);
           elem.target.classList.toggle('book');
         } else {
           setLimit(true);
@@ -63,7 +99,7 @@ const BayTicketPage = (props) => {
     };
     
     spaceShadowLoading();
-    const NEW_URL_SPACE_SHADOW = URL_SPACE_SHADOW + '?session=' + props.match.params.session;
+    const NEW_URL_SPACE_SHADOW = URL_SPACE_SHADOW + '?session=' + session;
     axios.get(NEW_URL_SPACE_SHADOW)
       .then(({ data }) => {
         spaceShadowData(data.space);
@@ -75,7 +111,7 @@ const BayTicketPage = (props) => {
 
   const handleClickBay = () => {
     setShowModal(!showModal);
-  }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -86,11 +122,11 @@ const BayTicketPage = (props) => {
     const spaces = spaceShadowData;
     const spacesHall = [];
     spaces.forEach((item) => {
-      let newspacesHall = [...spacesHall];
+      let newSpacesHall = [...spacesHall];
 
       if (spacesHall.length) {
         let isArr = false;
-        newspacesHall.forEach((elem, i) => {
+        newSpacesHall.forEach((elem, i) => {
           if (elem.row === item.row) {
             isArr = true;
             spacesHall[i].option.push({
@@ -130,7 +166,7 @@ const BayTicketPage = (props) => {
       } else {
         return 0;
       }
-    })
+    });
 
     spacesHall.forEach((item) => {
       item.option.sort((a, b) => {
@@ -144,12 +180,16 @@ const BayTicketPage = (props) => {
       })
     });
 
-    setSortNpacesHall(spacesHall);
+    setSortSpacesHall(spacesHall);
   }, [spaceShadowData]);
+
+  const isNoHaveError = !isErrorRoom || !isErrorSpaceShadow;
+  const isLoadingDone = !isLoadingRoom || !isLoadingSpaceShadow;
+  const haveData = isLoadingDone && movie && room && sortSpacesHall.length;
   
   return (
-    (!isErrorRoom || !isErrorSpaceShadow)
-      ? ((!isLoadingRoom || !isLoadingSpaceShadow) && movie && room && sortNpacesHall.length )
+    isNoHaveError
+      ? haveData
         ? <div className="page-holder">
             <div className="container">
               <h1 className="section-title d-center">{movie.title}</h1>
@@ -161,23 +201,19 @@ const BayTicketPage = (props) => {
                 {limit && <span className="limit">максимум 6 мест</span>}
                 <ul className="row-list">
                   {
-                    sortNpacesHall.map((item,i) => (
-                      <li className="row-item" key={i}>
-                        <span>{item.row}</span>
-                        <ul className="place-list">
-                          {
-                            item.option.map((elem,j) => (
-                              <li className={`place-item ${elem.booked ? 'booked' : ''} ${elem.free ? 'free' : ''}`} key={`${i}-${j}`} onClick={(elem) => selectPlase(i, j, elem)}>{elem.place}</li>
-                            ))
-                          }
-                        </ul>
-                        <span>{item.row}</span>
-                      </li>
+                    sortSpacesHall.map((item,i) => (
+                      <RowItem 
+                        key={i} 
+                        row={item.row} 
+                        option={item.option} 
+                        i={i} 
+                        selectPlase={selectPlase} 
+                      />
                     ))
                   }
                 </ul>
               </div>
-              {showModal && <ModalPlaceList bookPlace={bookPlace} handleClickBay={handleClickBay}/>}
+              {showModal && <ModalPlaceList bookedPlace={bookedPlace} handleClickBay={handleClickBay}/>}
             </div>
           </div>
         : <div className="loading-holder">
@@ -185,7 +221,7 @@ const BayTicketPage = (props) => {
           </div>
       : <Page404 /> 
   )
-}
+};
 
 const mapStateToProps = (state) => ({
   movies: state.moviesReducer.movies,

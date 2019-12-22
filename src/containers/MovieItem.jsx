@@ -10,7 +10,7 @@ const OptionItem = (props) => {
       </ul>
     </div>
   )
-}
+};
 
 const MovieItem = (props) => {
   const { movies, id } = props;

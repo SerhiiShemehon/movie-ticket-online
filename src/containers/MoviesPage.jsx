@@ -23,20 +23,23 @@ const MoviesPage = ({ movies }) => {
 
     const newMovie = movies.filter( (item) => {
       const filterElements = [];
+
       arrayFilterOption.forEach((elem) => {
         let editedArray = [];
+
         item[elem.name].forEach(current => {
           editedArray.push(current.toLowerCase().trim());
         })
         filterElements.push(editedArray.includes(elem.value));
-      })
+      });
+
       return (
         filterElements.every(elem => elem)
       )
     });
     
     setMovies(newMovie);
-  }
+  };
 
   return (
     <div className="page-holder">

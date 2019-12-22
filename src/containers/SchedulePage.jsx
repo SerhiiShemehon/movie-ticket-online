@@ -4,6 +4,46 @@ import { Link } from "react-router-dom";
 
 import { MONTH } from "../constants";
 
+const ScheduleTimeItem = ({ movie, time, costs, room, date, session, roomId}) => {
+  return (
+    <div className="movie-time-item" >
+      <div className="img-holder" style={{ 'backgroundImage': `url(${movie.poster})` }}></div>
+      <div className="text-holder">
+        <h3>{movie.title}</h3>
+        <h4 className="time">{`время: ${time}`}</h4>
+        <h4 className="costs">{`цена: ${costs}`}</h4>
+        <h4 className="hall">{`${room} зал`}<span className={`room-${room}`}></span></h4>
+        <Link to={`/buy/${roomId}/${movie._id}/${session}/${date}`} className="btn">купить</Link>
+        <Link to={`/movies/${movie._id}`} className="btn">УЗНАТЬ БОЛЬШЕ</Link>
+      </div>
+    </div>
+  );
+};
+
+const ScheduleDateItem = ({ i, date, option }) => {
+  return (
+    <div id={`schedule-item-${i}`} className="schedule-item" key={i}>
+      <h2 className="schedule-date">{date}</h2>
+      <div className="movie-time-list">
+        {
+          option.map((elem, j) => (
+            elem.movie && <ScheduleTimeItem 
+              key={j}
+              time={elem.time} 
+              costs={elem.costs} 
+              room={elem.room} 
+              date={elem.date} 
+              session={elem.session} 
+              roomId={elem.roomId} 
+              movie={elem.movie} 
+            />
+          ))
+        }
+      </div>
+    </div>
+  );
+};
+
 const SchedulePage = ({ sessionData, roomData, movies }) => {
 
   useEffect(() => {
@@ -77,7 +117,7 @@ const SchedulePage = ({ sessionData, roomData, movies }) => {
         <h1 className="section-title"><span>Расписание</span></h1>
         <nav className="nav-date">
           {
-            arrDate.length && arrDate.map((item, i) => (
+            arrDate.map((item, i) => (
               <button 
                 key={i} 
                 className="btn" 
@@ -90,27 +130,13 @@ const SchedulePage = ({ sessionData, roomData, movies }) => {
         </nav>
         <div className="schedule-list">
           {
-            arrDate.length && arrDate.map((item, i) => (
-              <div id={`schedule-item-${i}`} className="schedule-item" key={i}>
-                <h2 className="schedule-date">{item.date}</h2>
-                <div className="movie-time-list">
-                  {
-                    item.option.map((elem, j) => (
-                      elem.movie && (<div className="movie-time-item" key={j}>
-                        <div className="img-holder" style={{ 'backgroundImage': `url(${elem.movie.poster})` }}></div>
-                        <div className="text-holder">
-                          <h3>{elem.movie.title}</h3>
-                          <h4 className="time">{`время: ${elem.time}`}</h4>
-                          <h4 className="costs">{`цена: ${elem.costs}`}</h4>
-                          <h4 className="hall">{`${elem.room} зал`}<span className={`room-${elem.room}`}></span></h4>
-                          <Link to={`/buy/${elem.roomId}/${elem.movie._id}/${elem.session}/${elem.date}`} className="btn">купить</Link>
-                          <Link to={`/movies/${elem.movie._id}`} className="btn">УЗНАТЬ БОЛЬШЕ</Link>
-                        </div>
-                      </div>)
-                    ))
-                  }
-                </div>
-              </div>
+            arrDate.map((item, i) => (
+              <ScheduleDateItem 
+                date={item.date}
+                option={item.option}
+                i={i}
+                key={i}
+              />
             ))
           }
         </div>
