@@ -4,6 +4,36 @@ import { Link } from "react-router-dom";
 
 import { MONTH } from "../constants";
 
+const TimeList = ({ roomId, session, date, room, time, costs, id }) => {
+	return (
+		<li className='session-time-item'>
+			<Link to={`/buy/${roomId}/${id}/${session}/${date}`} className={`btn btn-${room}`}>{time}</Link>
+			<span>{`Цена: ${costs}`}</span>
+		</li>
+	);
+};
+
+const DateList = ({ date, option, id}) => {
+	return (
+		<li className="session-item">
+			<div className="session-date">{date}:</div>
+			<ul className="session-time-list">
+				{option.map((elem, j) => (
+					<TimeList 
+						key={j}
+						roomId={elem.roomId} 
+						session={elem.session} 
+						date={elem.date} 
+						room={elem.room} 
+						time={elem.time} 
+						costs={elem.costs} 
+					/>
+				))}
+			</ul>
+		</li>
+	);
+};
+
 const CinemaSchedules = ({ sessionData, roomData, id }) => {
 	const currentSessionData = sessionData.filter((item) => item.movie === id)
 	const arrDate = [];
@@ -65,24 +95,22 @@ const CinemaSchedules = ({ sessionData, roomData, id }) => {
 				<h6 className="section-subtitle">Выберите день и время</h6>
 				<ul className="rooms-color">
 					{roomData.map((item,i) => (
-						<li key={i}><span className={`room-${item.name}`}></span>{`${item.name} зал`}</li>
+						<li key={i}>
+							<span className={`room-${item.name}`}></span>
+							{`${item.name} зал`}
+						</li>
 					))}
 				</ul>
 			</div>
 			<ul className="session-list">
 				{arrDate.length 
 					? arrDate.map( (item, i) => (
-						<li className="session-item" key={i}>
-							<div className="session-date">{item.date}:</div>
-							<ul className="session-time-list">
-								{item.option.map((elem,j)=>(
-									<li className='session-time-item' key={j}>
-										<Link to={`/buy/${elem.roomId}/${id}/${elem.session}/${elem.date}`} className={`btn btn-${elem.room}`}>{elem.time}</Link>
-										<span>{`Цена: ${elem.costs}`}</span>
-									</li>
-								))}
-							</ul>
-						</li>
+						<DateList 
+							key={i} 
+							date={item.date} 
+							option={item.option} 
+							id={id} 
+						/>
 					))
 					: <li className="not-session">Извините, но на данный фильм нет сеансов!</li>}
 			</ul>

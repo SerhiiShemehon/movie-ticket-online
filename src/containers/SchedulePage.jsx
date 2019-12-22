@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 import { MONTH } from "../constants";
 
-const SchedulePage = (props) => {
-  const { sessionData, roomData, movies } = props;
+const SchedulePage = ({ sessionData, roomData, movies }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,7 +32,7 @@ const SchedulePage = (props) => {
             movie: movieItem,
             costs: item.costs,
             session: item._id,
-						date: item.date
+            date: item.date
           });
         }
       });
@@ -47,7 +46,7 @@ const SchedulePage = (props) => {
             movie: movieItem,
             costs: item.costs,
             session: item._id,
-						date: item.date
+            date: item.date
           }]
         })
       }
@@ -61,7 +60,7 @@ const SchedulePage = (props) => {
           movie: movieItem,
           costs: item.costs,
           session: item._id,
-					date: item.date
+          date: item.date
         }]
       });
     }
@@ -79,7 +78,13 @@ const SchedulePage = (props) => {
         <nav className="nav-date">
           {
             arrDate.length && arrDate.map((item, i) => (
-              <button key={i} className="btn" onClick={() => handleClickToSession(`schedule-item-${i}`)}>{item.date}</button>
+              <button 
+                key={i} 
+                className="btn" 
+                onClick={() => handleClickToSession(`schedule-item-${i}`)}
+              >
+                {item.date}
+              </button>
             ))
           }
         </nav>
@@ -111,8 +116,8 @@ const SchedulePage = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => ({
   sessionData: state.sessionReducer.sessionData,

@@ -13,18 +13,15 @@ const BannerMovies = ({ movies }) => {
     movie = movies.find((item, i) => i === currentBanner);
   }
 
-  return (
-    <React.Fragment>
-      { !!movie
-        ? <div className="section-banner">
-            <div className="banner-holder" style={{ backgroundImage: `url(${bannerMovies[movie._id]})`}}>
-            <h1>{movie.title}</h1>
-            <Link to={`/movies/${movie._id}`} className="btn">узнать больше</Link>
-            </div>
-          </div>
-        : <div></div>
-      }
-    </React.Fragment >
+  return ( 
+    !!movie && <div className="section-banner">
+      <div className="banner-holder" style={{ 
+        backgroundImage: `url(${bannerMovies[movie._id]})`
+      }}>
+        <h1>{movie.title}</h1>
+        <Link to={`/movies/${movie._id}`} className="btn">узнать больше</Link>
+      </div>
+    </div>
   );
 }
 

@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-const ListMovies = (props) => {
-  const { movies, quantityMovies } = props;
+const ListMovies = ({ movies, quantityMovies }) => {
   const newMovies = movies.filter((item, i) => i < quantityMovies);
 
   return (
@@ -27,7 +26,6 @@ const ListMovies = (props) => {
 const mapStateToProps = (state) => ({
   movies: state.moviesReducer.movies
 });
-
 
 export const ListMoviesContainer = connect(
   mapStateToProps

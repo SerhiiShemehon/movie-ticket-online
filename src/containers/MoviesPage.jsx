@@ -13,12 +13,14 @@ const MoviesPage = ({ movies }) => {
   const hendleFilter = () => {
     const filter = document.querySelectorAll('.filter-block input:not(.not-filter):checked');
     const arrayFilterOption = [];
+
     filter.forEach((elem) => {
       arrayFilterOption.push({
         name: elem.name,
         value: elem.value
       })
     });
+
     const newMovie = movies.filter( (item) => {
       const filterElements = [];
       arrayFilterOption.forEach((elem) => {
@@ -32,6 +34,7 @@ const MoviesPage = ({ movies }) => {
         filterElements.every(elem => elem)
       )
     });
+    
     setMovies(newMovie);
   }
 

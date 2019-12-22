@@ -6,3 +6,5 @@ export * from './AllMovies';
 export * from './FilterMovies';
 export * from './ModalPlaceList';
 export * from './Login';
+export * from './NewMovieForm';
+export * from './AdminMovieItem';
